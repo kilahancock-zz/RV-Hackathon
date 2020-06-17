@@ -15,6 +15,7 @@ const db = mysql.createPool({
 app.use(cors())
 
 app.get("/echo/:message", (req, res) => {
+  console.log("hello");
   db.query('SELECT ? as result', [req.params.message],
     (err, results) => {
       if(err){
