@@ -41,9 +41,7 @@ app.get("/meta", (req, res) => {
     })
 });
 
-//front end sends new user params to this endpoint, joined by "+".
-//split the params, and INSERT new user based on all params provided.
-//return whether or not it was successful.
+//add a new user to the DB (only do this after checking for existing user).
 app.get("/newUser/:message", (req, res) => {
     let parameters = req.params.message.split("+");
     let queryStr = 'INSERT INTO Test_Table(firstName, lastName, email, passphrase)' +
@@ -56,6 +54,22 @@ app.get("/newUser/:message", (req, res) => {
             res.status(500)
         }
         console.log(results);
+        res.send(results);
+    });
+});
+
+//check to see if a user currently exists in the DB
+app.get("/existUser/:message", (req, res) => {
+    let email = req.params.message;
+    let queryStr = "SELECT * FROM Test_Table WHERE emailAddress='" + email + "';";
+    console.log(queryStr);
+    db.query(queryStr, (err, results) => {
+        if(err){
+            console.error(err);
+            res.status(500)
+        }
+        console.log(results);
+        res.send(results);
     });
 });
 
