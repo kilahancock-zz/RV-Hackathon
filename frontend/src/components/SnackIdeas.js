@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import {Navbar, Nav, Form, FormControl, Button, Container} from 'react-bootstrap';
 import Navigation from './Navigation.js';
 
-class Create extends Component {
+class SnackIdeas extends Component {
   constructor(props) {
     super(props);
 
@@ -16,7 +16,7 @@ class Create extends Component {
 
           return(
               <h1>
-                Create Something!
+                Snacks!
               </h1>
           );
   }
@@ -24,4 +24,4 @@ class Create extends Component {
 }
 
 
-export default Create;
+export default SnackIdeas;
