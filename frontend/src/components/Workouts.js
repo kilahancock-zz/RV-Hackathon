@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Tab, Tabs} from 'react-bootstrap';
 import axios from 'axios';
 import './Workouts.css'
 
@@ -47,10 +47,86 @@ class Workouts extends Component {
 
           return(
             <div>
-              <h1>
-                Exercises!
-              </h1>
-              <div>{this.state.exerciseCards}</div>
+              <Container>
+                <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
+                  <Tab eventKey="videos" title="Videos">
+                    <h3 className="exHead">Videos from RV's Very Own: Nick Trull</h3>
+                    <Row>
+                      <Col>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/TVFW0hIqDOY" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                      <Col>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/n74UV0QNXH0" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/bZZDReTfBFY" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                      <Col>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4ZOgdOEt9hA" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/IdnWH3uDbcE" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                      <Col>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Gnrya2Vh4F8" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/skIo_PIzV2E" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                      <Col>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/QM4NZCetNxE" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/EM6MbIY_6SY" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                      <Col>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/1aRo0Ryh1Ac" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                    </Row>
+                  </Tab>
+                  <Tab eventKey="exercises" title="Exercises">
+                    <div>{this.state.exerciseCards}</div>
+                  </Tab>
+                </Tabs>
+              </Container>
             </div>
           );
   }
