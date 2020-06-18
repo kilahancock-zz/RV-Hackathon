@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import Aux from '../Aux/Aux.js'
 import Navigation from "../components/Navigation.js"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
-
-class Main extends Component {
+class Eat extends Component {
     state = {
 
     };
@@ -19,6 +24,7 @@ class Main extends Component {
             return(
                 <Aux>
                   <Navigation />
+                  <h1>"Eat"</h1>
                 </Aux>
             );
     }
@@ -26,4 +32,4 @@ class Main extends Component {
 
 
 
-export default Main;
+export default Eat;
