@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Entertainment from './Entertainment.js';
 import Main from './containers/Main.js'
 
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <Main />
+      <Entertainment />
     </div>
   );
 }
