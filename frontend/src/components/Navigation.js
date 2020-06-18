@@ -62,20 +62,21 @@ class Navigation extends Component {
                           <Nav.Link>
                             <Link to="/Create" category={"create"}>Create</Link>
                           </Nav.Link>
-                          <Nav pullRight>
-                          <Nav.Link>
-                            <Link to="/login">Login</Link>
-                          </Nav.Link>
-                          <Nav.Link>
-                            <Link to="/signup">SignUp</Link>
-                          </Nav.Link>
-                          </Nav>
-
                       </Nav>
                       <Form inline>
                           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                           <Button>Search</Button>
                       </Form>
+
+                      <Nav className="login">
+                      <Nav.Link>
+                        <Link to="/login">Login</Link>
+                      </Nav.Link>
+                      <Nav.Link>
+                        <Link to="/signup">SignUp</Link>
+                      </Nav.Link>
+                      </Nav>
+
                   </Navbar.Collapse>
               </Navbar>
           </Container>

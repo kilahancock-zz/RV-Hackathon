@@ -4,6 +4,7 @@ import Navigation from './components/Navigation.js';
 import Main from './containers/Main.js';
 import Login from './containers/Login.js';
 
+
 //debug helper
 // function getTableColumns() {
 //     //useEffect(() => {
@@ -13,22 +14,6 @@ import Login from './containers/Login.js';
 //     //}, []);
 // }
 
-//call this function whenever we desire a new user in the system.
-//and the user has provided the appropriate credentials.
-function createNewUser(firstName, lastName, emailAddress, password) {
-    if (firstName.includes("+")) {
-        console.log("First name cannot include '+'.");
-    } else if (lastName.includes("+")) {
-        console.log("Last name cannot include '+'.");
-    } else if (emailAddress.includes("+")) {
-        console.log("Email address cannot include '+'.");
-    } else if (password.includes("+")) {
-        console.log("Password cannot include '+'.");
-    } else {
-        let queryStr = 'http://localhost:3000/newUser/' + firstName + "+" + lastName + "+" + emailAddress + "+" + password;
-        fetch(queryStr).then(response => console.log(response));
-    }
-}
 
 //Call this function to get data from outlook calendar
 function getOutlookData() {
