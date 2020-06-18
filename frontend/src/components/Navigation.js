@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navigation.css';
 import {Navbar, Nav, Form, FormControl, Button, Container} from 'react-bootstrap';
-import Laugh from '../containers/Laugh.js'
-import Eat from '../containers/Eat.js'
+import Entertainment from '../containers/Entertainment.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -66,10 +65,10 @@ class Navigation extends Component {
             </Container>
             <Switch>
               <Route path="/Laugh">
-                <Laugh />
+                <Entertainment />
               </Route>
               <Route path="/Eat">
-                <Eat />
+                <Entertainment />
               </Route>
               </Switch>
             </Router>
