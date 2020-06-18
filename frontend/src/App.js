@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Main from './containers/Main.js'
+import Entertainment from './components/Entertainment.js';
+import Navigation from './components/Navigation.js';
+import Main from './containers/Main.js';
+
 
 function App() {
 
@@ -13,6 +16,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navigation />
       <Main />
     </div>
   );
