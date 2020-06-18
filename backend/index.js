@@ -16,37 +16,13 @@ const db = mysql.createPool({
 // Allow cors
 app.use(cors());
 
-//debugging purposes.
-app.get("/echo/:message", (req, res) => {
-  console.log("hello");
-  db.query('SELECT ? as result', [req.params.message],
-    (err, results) => {
-      if(err){
-        console.error(err);
-        res.status(500)
-      }
-      res.send(results[0].result);
-    }
-  );
-});
-
-//this is used to pull all available columns in the table, debugging purposes.
-app.get("/meta", (req, res) => {
-    db.query('SELECT * FROM INFORMATION_SCHEMA.COLUMNS where TABLE_NAME="Test_Table";', (err, results) => {
-        if(err){
-            console.error(err);
-            res.status(500)
-          }
-        res.send(results)
-    })
-});
-
 //add a new user to the DB (only do this after checking for existing user).
 app.get("/newUser/:message", (req, res) => {
     let parameters = req.params.message.split("+");
-    let queryStr = 'INSERT INTO Test_Table(firstName, lastName, email, passphrase)' +
+    let queryStr = 'INSERT INTO Test_Table(firstName, lastName, email, passphrase,' +
+        ' food, creative, entertainment, workout)' +
         " VALUES(" + "'" + parameters[0] + "', '" + parameters[1] +
-        "', '" + parameters[2] + "', '" + parameters[3] + "');";
+        "', '" + parameters[2] + "', '" + parameters[3] + "', 0, 0, 0, 0);";
     console.log(queryStr);
     db.query(queryStr, (err, results) => {
         if(err){
@@ -61,7 +37,24 @@ app.get("/newUser/:message", (req, res) => {
 //check to see if a user currently exists in the DB
 app.get("/existUser/:message", (req, res) => {
     let email = req.params.message;
-    let queryStr = "SELECT * FROM Test_Table WHERE emailAddress='" + email + "';";
+    let queryStr = "SELECT * FROM Test_Table WHERE email='" + email + "';";
+    console.log(queryStr);
+    db.query(queryStr, (err, results) => {
+        if(err){
+            console.error(err);
+            res.status(500)
+        }
+        console.log(results);
+        res.send(results);
+    });
+});
+
+//Tries to login a user and returns their stored personal info.
+app.get("/loginUser/:message", (req, res) => {
+    let parameters = req.params.message.split("+");
+    let email = parameters[0];
+    let password = parameters[1];
+    let queryStr = "SELECT * FROM Test_Table WHERE email='" + email + "' AND passphrase='" + password + "';";
     console.log(queryStr);
     db.query(queryStr, (err, results) => {
         if(err){
@@ -94,8 +87,8 @@ app.get("/getOutlookData", (req, res) => {
   }
 
   request(options, function(err, res, body) {
-    console.log("Results: ");
-    console.log(body);
+    //console.log("Results: ");
+    //console.log(body);
     results = body;
   });
 
