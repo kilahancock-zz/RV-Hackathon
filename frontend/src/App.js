@@ -32,8 +32,8 @@ function createNewUser(firstName, lastName, emailAddress, password) {
 
 //Call this function to get data from outlook calendar
 function getOutlookData() {
-  let endpoint = 'http://localhost:3000/getOutlookData/';
-  fetch(endpoint).then(response => console.log(response));
+  let endpoint = 'http://localhost:3000/getOutlookData';
+  fetch(endpoint).then(response => console.log(response.json()));
 }
 
 //debug helper
