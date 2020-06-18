@@ -8,12 +8,12 @@ a {
   text-decoration: underline;
 }
 
-.links {
-  margin-left: 5px;
+#basic-navbar-nav {
+  float: right;
 }
 
 .login {
-  margin-left: 20px;
+  margin-left: 150px;
 }
 
 .navbar-collapse {

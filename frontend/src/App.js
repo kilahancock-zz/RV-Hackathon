@@ -1,8 +1,19 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import Navigation from './components/Navigation.js';
-import Main from './containers/Main.js';
 import Login from './containers/Login.js';
+import Home from './components/Home.js';
+import Entertainment from './components/Entertainment.js';
+import Food from './components/Food.js'
+import Workouts from './components/Workouts.js';
+import Create from './components/Create.js';
+import Signup from './containers/Signup.js';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 
 
 //debug helper
@@ -35,9 +46,36 @@ function App() {
   getOutlookData();
 
   return (
+    <Router>
     <div className="App">
       <Navigation />
+
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/signup">
+          <Signup />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/Laugh">
+          <Entertainment />
+        </Route>
+        <Route path="/Eat">
+          <Food />
+        </Route>
+        <Route path="/Stretch">
+          <Workouts />
+        </Route>
+        <Route path="/Create">
+          <Create />
+        </Route>
+        </Switch>
+
     </div>
+    </Router>
   );
 }
 
