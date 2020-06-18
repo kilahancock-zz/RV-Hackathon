@@ -44,28 +44,28 @@ class Navigation extends Component {
   render() {
       return(
           <Router>
-          <Container className="nav">
-              <Navbar id="navbar" sticky="top" bg="light" expand="lg">
-                  <Navbar.Brand><Link to="/">RedRelax</Link></Navbar.Brand>
+          <Container className= "nav">
+              <Navbar className = "nav" sticky="top" bg="light" expand="lg">
+                  <Navbar.Brand className = "title"><Link to="/">RedRelax</Link></Navbar.Brand>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
-                      <Nav className="mr-auto">
+                      <Nav className="links">
                           <Nav.Link>
-                            <Link to="/Laugh" category={"laugh"}>Laugh</Link>
+                            <Link to="/Laugh">Laugh</Link>
                           </Nav.Link>
                           <Nav.Link>
-                            <Link to="/Eat" category={"eat"}>Eat</Link>
+                            <Link to="/Eat">Eat</Link>
                           </Nav.Link>
                           <Nav.Link>
-                            <Link to="/Stretch" category={"stretch"}>Stretch</Link>
+                            <Link to="/Stretch">Stretch</Link>
                           </Nav.Link>
                           <Nav.Link>
-                            <Link to="/Create" category={"create"}>Create</Link>
+                            <Link to="/Create">Create</Link>
                           </Nav.Link>
                       </Nav>
                       <Form inline>
                           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                          <Button>Search</Button>
+                          <Button className="search">Search</Button>
                       </Form>
 
                       <Nav className="login">
