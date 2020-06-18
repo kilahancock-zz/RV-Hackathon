@@ -2,7 +2,12 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navigation.css';
 import {Navbar, Nav, Form, FormControl, Button, Container} from 'react-bootstrap';
-import Entertainment from '../containers/Entertainment.js';
+import Entertainment from './Entertainment.js';
+import SnackIdeas from './SnackIdeas.js';
+import Workouts from './Workouts.js';
+import Create from './Create.js';
+import App from '../App.js';
+import Main from '../containers/Main.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -39,7 +44,7 @@ class Navigation extends Component {
             <Router>
             <Container className="nav">
                 <Navbar id="navbar" sticky="top" bg="light" expand="lg">
-                    <Navbar.Brand>RedRelax</Navbar.Brand>
+                    <Navbar.Brand><Link to="/">RedRelax</Link></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
@@ -68,7 +73,13 @@ class Navigation extends Component {
                 <Entertainment />
               </Route>
               <Route path="/Eat">
-                <Entertainment />
+                <SnackIdeas />
+              </Route>
+              <Route path="/Stretch">
+                <Workouts />
+              </Route>
+              <Route path="/Create">
+                <Create />
               </Route>
               </Switch>
             </Router>

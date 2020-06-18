@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Aux from '../Aux/Aux.js'
 import Navigation from "../components/Navigation.js"
+import './Main.css';
 
 
 
@@ -17,9 +18,9 @@ class Main extends Component {
     render() {
 
             return(
-                <Aux>
-                  <Navigation />
-                </Aux>
+                <div class="cal">
+                  Calendar remains on page at all times?
+                </div>
             );
     }
 }
