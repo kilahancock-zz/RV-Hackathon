@@ -15,16 +15,70 @@ import {
   Link
 } from 'react-router-dom';
 
+//creates a new user in the system.
+async function createNewUser(firstName, lastName, emailAddress, password) {
+    let success = false;
+    if (firstName.includes("+")) {
+        throw ("First name cannot include '+'.");
+    } else if (lastName.includes("+")) {
+        throw ("Last name cannot include '+'.");
+    } else if (emailAddress.includes("+")) {
+        throw ("Email address cannot include '+'.");
+    } else if (password.includes("+")) {
+        throw ("Password cannot include '+'.");
+    } else {
+        let queryStr = 'http://localhost:3000/newUser/' + firstName + "+" + lastName + "+" + emailAddress + "+" + password;
+        await fetch(queryStr)
+            .then(response => {
+                console.log("successfully created account for: " + firstName + " " + lastName +
+                " with email: " + emailAddress + " and password: " + password);
+                success = true;
+            });
+    }
+    return success;
+}
 
-//debug helper
-// function getTableColumns() {
-//     //useEffect(() => {
-//         fetch('http://localhost:3000/meta')
-//             .then(response => response.json())
-//             .then(data => console.log(data));
-//     //}, []);
-// }
+//checks to see if a user is already in the system / exists.
+async function alreadyExistUser(emailAddress) {
+    let exists = false;
+    if (emailAddress.includes("+")) {
+        throw ("Email address cannot include '+'.");
+    } else {
+        let queryStr = 'http://localhost:3000/existUser/' + emailAddress;
+        await fetch(queryStr)
+            .then(response => response.json())
+            .then(data => {
+                //console.log(data);
+                exists = data.length > 0;
+                if (exists) {
+                    console.log("a user with " + emailAddress + " already exists.");
+                } else {
+                    console.log("a user with " + emailAddress + " does NOT already exist.");
+                }
+            });
+    }
+    return exists;
+}
 
+//Attempts a user login. Do this only after knowing a User already exists.
+async function loginUser(emailAddress, password) {
+    let human = null;
+    if (emailAddress.includes("+")) {
+        throw ("Email address cannot include '+'.");
+    } else if (password.includes("+")) {
+        throw ("Password cannot include '+'.");
+    } else {
+        let queryStr = 'http://localhost:3000/loginUser/' + emailAddress + "+" + password;
+        await fetch(queryStr)
+            .then(response => response.json())
+            .then(data => data[0])
+            .then(person => {
+                console.log("successfully logged in " + emailAddress);
+                human = person;
+            });
+    }
+    return human;
+}
 
 //Call this function to get data from outlook calendar
 function getOutlookData() {
@@ -32,18 +86,32 @@ function getOutlookData() {
   fetch(endpoint).then(response => console.log(response.json()));
 }
 
-//debug helper
-// function getTableColumns() {
-//     //useEffect(() => {
-//         fetch('http://localhost:3000/meta')
-//             .then(response => response.json())
-//             .then(data => console.log(data));
-//     //}, []);
-
 function App() {
 
-  //createNewUser("Billy", "Bob", "Billy@gmail.com", "1234");
-  getOutlookData();
+    //test to see if Billy already exists as a user.
+    alreadyExistUser("Billy@gmail.com").then(exists => {
+        //if not, create an account for him.
+       if (!exists) {
+           createNewUser("Billy", "Bob", "Billy@gmail.com", "12345").then((success) => {
+               //if account creation successful, go ahead and log him in.
+               if (success) {
+                   loginUser("Billy@gmail.com", "12345").then(results => {
+                       console.log(results);
+                   });
+               }
+           });
+       //if so, log him in and print his info.
+       } else {
+           loginUser("Billy@gmail.com", "12345").then(results => {
+               console.log(results);
+           });
+       }
+    });
+
+
+
+
+    getOutlookData();
 
   return (
     <Router>
