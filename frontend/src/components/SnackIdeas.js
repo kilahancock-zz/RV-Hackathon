@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar, Nav, Form, FormControl, Button, Container} from 'react-bootstrap';
 import Navigation from './Navigation.js';
 

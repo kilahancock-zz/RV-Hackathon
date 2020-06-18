@@ -1,8 +1,8 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect } from 'react';
 import './App.css';
 import Navigation from './components/Navigation.js';
 import Main from './containers/Main.js';
+import Login from './containers/Login.js';
 
 //debug helper
 // function getTableColumns() {
@@ -45,7 +45,6 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <Main />
     </div>
   );
 }
