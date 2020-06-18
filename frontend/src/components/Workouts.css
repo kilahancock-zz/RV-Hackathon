@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+.exercises {
+    width: 40%;
+    margin: 20px;
+    display: inline-block;
+}
+
+.exRow {
+    background-color: #eeeeee;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+}
+
+.exHead {
+    margin: 20px;
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+}

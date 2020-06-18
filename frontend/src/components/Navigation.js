@@ -3,11 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './navigation.css';
 import {Navbar, Nav, Form, FormControl, Button, Container} from 'react-bootstrap';
 import Entertainment from './Entertainment.js';
-import SnackIdeas from './SnackIdeas.js';
+import Food from './Food.js'
 import Workouts from './Workouts.js';
 import Create from './Create.js';
 import App from '../App.js';
 import Main from '../containers/Main.js';
+import Login from '../containers/Login.js';
+import Signup from '../containers/Signup.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -39,52 +41,68 @@ class Navigation extends Component {
 
 
 
-    render() {
-        return(
-            <Router>
-            <Container className="nav">
-                <Navbar id="navbar" sticky="top" bg="light" expand="lg">
-                    <Navbar.Brand><Link to="/">RedRelax</Link></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
-                            <Nav.Link>
-                              <Link to="/Laugh" category={"laugh"}>Laugh</Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                              <Link to="/Eat" category={"eat"}>Eat</Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                              <Link to="/Stretch" category={"stretch"}>Stretch</Link>
-                            </Nav.Link>
-                            <Nav.Link>
-                              <Link to="/Create" category={"create"}>Create</Link>
-                            </Nav.Link>
-                        </Nav>
-                        <Form inline>
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                            <Button>Search</Button>
-                        </Form>
-                    </Navbar.Collapse>
-                </Navbar>
-            </Container>
-            <Switch>
-              <Route path="/Laugh">
-                <Entertainment />
+  render() {
+      return(
+          <Router>
+          <Container className= "nav">
+              <Navbar className = "nav" sticky="top" bg="light" expand="lg">
+                  <Navbar.Brand className = "title"><Link to="/">RedRelax</Link></Navbar.Brand>
+                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                  <Navbar.Collapse id="basic-navbar-nav">
+                      <Nav className="links">
+                          <Nav.Link>
+                            <Link to="/Laugh">Laugh</Link>
+                          </Nav.Link>
+                          <Nav.Link>
+                            <Link to="/Eat">Eat</Link>
+                          </Nav.Link>
+                          <Nav.Link>
+                            <Link to="/Stretch">Stretch</Link>
+                          </Nav.Link>
+                          <Nav.Link>
+                            <Link to="/Create">Create</Link>
+                          </Nav.Link>
+                      </Nav>
+                      <Form inline>
+                          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                          <Button className="search">Search</Button>
+                      </Form>
+
+                      <Nav className="login">
+                      <Nav.Link>
+                        <Link to="/login">Login</Link>
+                      </Nav.Link>
+                      <Nav.Link>
+                        <Link to="/signup">SignUp</Link>
+                      </Nav.Link>
+                      </Nav>
+
+                  </Navbar.Collapse>
+              </Navbar>
+          </Container>
+          <Switch>
+            <Route path="/signup">
+              <Signup />
               </Route>
-              <Route path="/Eat">
-                <SnackIdeas />
-              </Route>
-              <Route path="/Stretch">
-                <Workouts />
-              </Route>
-              <Route path="/Create">
-                <Create />
-              </Route>
-              </Switch>
-            </Router>
-        );
-    }
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/Laugh">
+              <Entertainment />
+            </Route>
+            <Route path="/Eat">
+              <Food />
+            </Route>
+            <Route path="/Stretch">
+              <Workouts />
+            </Route>
+            <Route path="/Create">
+              <Create />
+            </Route>
+            </Switch>
+          </Router>
+      );
+  }
 }
 
 export default Navigation;

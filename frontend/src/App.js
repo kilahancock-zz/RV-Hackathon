@@ -1,8 +1,8 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect } from 'react';
 import './App.css';
 import Navigation from './components/Navigation.js';
 import Main from './containers/Main.js';
+import Login from './containers/Login.js';
 
 //creates a new user in the system.
 async function createNewUser(firstName, lastName, emailAddress, password) {
@@ -71,8 +71,8 @@ async function loginUser(emailAddress, password) {
 
 //Call this function to get data from outlook calendar
 function getOutlookData() {
-  let endpoint = 'http://localhost:3000/getOutlookData/';
-  fetch(endpoint).then(response => console.log(response));
+  let endpoint = 'http://localhost:3000/getOutlookData';
+  fetch(endpoint).then(response => console.log(response.json()));
 }
 
 function App() {
@@ -105,7 +105,6 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <Main />
     </div>
   );
 }
