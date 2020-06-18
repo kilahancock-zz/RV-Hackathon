@@ -1,11 +1,8 @@
-//import React, { useEffect } from 'react';
-import React from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useEffect } from 'react';
 import './App.css';
-import Entertainment from './components/Entertainment.js';
 import Navigation from './components/Navigation.js';
 import Main from './containers/Main.js';
-
 
 //debug helper
 // function getTableColumns() {
@@ -32,6 +29,14 @@ function createNewUser(firstName, lastName, emailAddress, password) {
         fetch(queryStr).then(response => console.log(response));
     }
 }
+
+//debug helper
+// function getTableColumns() {
+//     //useEffect(() => {
+//         fetch('http://localhost:3000/meta')
+//             .then(response => response.json())
+//             .then(data => console.log(data));
+//     //}, []);
 
 function App() {
 
