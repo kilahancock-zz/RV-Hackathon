@@ -6,5 +6,25 @@
 }
 
 h1 {
+  margin-top: 50px;
   color: #fff;
+}
+
+.row {
+  margin-top: 100px;
+  border-style: groove;
+  border-color: #000;
+  padding: 20px;
+}
+
+.col {
+  padding: 20px;
+  width: 100px;
+}
+
+.left {
+  border-left: groove;
+  border-color: #000;
+  margin-left: 50px;
+  border-left-width: thick;
 }

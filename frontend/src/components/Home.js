@@ -4,7 +4,7 @@ import './Home.css';
 
 class Home extends Component {
     state = {
-        user_logged_in: false,
+        user_logged_in: true,
         entertainment_data: 10,
         snack_data: 4,
         workout_data: 5,
@@ -19,11 +19,11 @@ class Home extends Component {
               <h1>Your Break Stats!</h1>
               <Row>
                 <Col>Memes viewed: {this.state.entertainment_data}</Col>
-                <Col>Snacks made: {this.state.snack_data}</Col>
+                <Col className="left">Snacks made: {this.state.snack_data}</Col>
               </Row>
               <Row>
                 <Col>Workouts completed: {this.state.workout_data}</Col>
-                <Col>Creative moments: {this.state.creative_data}</Col>
+                <Col className="left">Creative moments: {this.state.creative_data}</Col>
               </Row>
             </Container>
             );
