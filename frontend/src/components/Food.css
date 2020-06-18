@@ -1,17 +1,4 @@
-.memeImg {
-    width: 50%;
-    height: auto;
-}
-
-.memeTitle {
-    text-align: left;
-}
-
-.memeAuthor {
-    text-align: left;
-}
-
-.memeCard {
+.jokeCard {
     background-color: #eeee;
     border-radius: 10px;
     margin: 20px;
@@ -20,7 +7,11 @@
     display: inline-block;
 }
 
-.gif {
+.factCard {
+    background-color: #eeee;
+    border-radius: 10px;
     margin: 20px;
+    padding: 20px;
+    width: 70%;
     display: inline-block;
 }

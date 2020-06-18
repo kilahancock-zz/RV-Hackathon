@@ -5,7 +5,8 @@ import './Entertainment.css'
 
 class Entertainment extends Component {
     state = {
-        cards: []
+        memeCards: [],
+        gifCards: []
     }
     async fetchMemes() {
         let titles = [];
@@ -27,25 +28,42 @@ class Entertainment extends Component {
                     <img className="memeImg" src={images[i]} alt="meme"/></div>;
                 tempCards.push(inner);
             }
-            this.setState({cards: tempCards})
+            this.setState({memeCards: tempCards})
+        })
+    }
+    async fetchGifs() {
+        let gifs = [];
+        let tempCards = [];
+        await axios.get('https://api.giphy.com/v1/gifs/trending?api_key=wtsQqjEI3Xs8i3Z0iFTK37yUhSIVkmFv&limit=50')
+        .then(res => {
+            for (let i = 0; i < 50; i++) {
+                gifs.push(res.data.data[i].images.downsized_large.url);
+                let temp = <div><img className="gif" alt="gif" src={gifs[i]}/></div>
+                tempCards.push(temp);
+            }
+            this.setState({gifCards: tempCards})
         })
     }
 
-    render() {
+    componentDidMount() {
         this.fetchMemes();
+        this.fetchGifs();
+    }
+
+    render() {
         return(
             <div>
             <h1>Entertainment</h1>
             <Container>
-            <Tabs defaultActiveKey="memes" id="uncontrolled-tab-example">
+            <Tabs defaultActiveKey="gifs" id="uncontrolled-tab-example">
                 <Tab eventKey="memes" title="Memes">
-                    <div>{this.state.cards}</div>
+                    <div>{this.state.memeCards}</div>
                 </Tab>
                 <Tab eventKey="videos" title="Videos">
                     <h1>Embedded Youtube Videos</h1>
                 </Tab>
-                <Tab eventKey="riddles" title="Riddles">
-                    <h1>Riddles??</h1>
+                <Tab eventKey="gifs" title="GifHub">
+                    <div>{this.state.gifCards}</div>
                 </Tab>
             </Tabs>
             </Container>

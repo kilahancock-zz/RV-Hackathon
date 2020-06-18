@@ -72,8 +72,8 @@ class Signup extends Component {
           </FormGroup>
           <Button
           block
-        type="submit"
-        bsSize="large">Submit
+          type="submit"
+          bsSize="large">Submit
         </Button>
       </form>
       </div>

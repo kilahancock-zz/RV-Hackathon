@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './navigation.css';
 import {Navbar, Nav, Form, FormControl, Button, Container} from 'react-bootstrap';
 import Entertainment from './Entertainment.js';
-import SnackIdeas from './SnackIdeas.js';
+import Food from './Food.js'
 import Workouts from './Workouts.js';
 import Create from './Create.js';
 import App from '../App.js';
@@ -90,7 +90,7 @@ class Navigation extends Component {
               <Entertainment />
             </Route>
             <Route path="/Eat">
-              <SnackIdeas />
+              <Food />
             </Route>
             <Route path="/Stretch">
               <Workouts />
