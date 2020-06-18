@@ -43,6 +43,12 @@ function alreadyExistUser(emailAddress) {
     }
 }
 
+//Call this function to get data from outlook calendar
+function getOutlookData() {
+  let endpoint = 'http://localhost:3000/getOutlookData/';
+  fetch(endpoint).then(response => console.log(response));
+}
+
 //debug helper
 // function getTableColumns() {
 //     //useEffect(() => {
@@ -53,8 +59,9 @@ function alreadyExistUser(emailAddress) {
 
 function App() {
 
-  //createNewUser("Billy", "Bob", "Billy@gmail.com", "1234");
+    //createNewUser("Billy", "Bob", "Billy@gmail.com", "1234");
     alreadyExistUser("Billy@gmail.com");
+    getOutlookData();
 
   return (
     <div className="App">
