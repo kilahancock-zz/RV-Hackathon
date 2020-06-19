@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import Navigation from './components/Navigation.js';
+import Calendar from './components/Calendar.js';
 import Main from './containers/Main.js';
 import Login from './containers/Login.js';
 
@@ -33,7 +34,10 @@ function createNewUser(firstName, lastName, emailAddress, password) {
 //Call this function to get data from outlook calendar
 function getOutlookData() {
   let endpoint = 'http://localhost:3000/getOutlookData';
-  fetch(endpoint).then(response => console.log(response.json()));
+  fetch(endpoint).then(response => {
+    let returnValue = response.json();
+    console.log(returnValue);
+  });
 }
 
 //debug helper
@@ -52,6 +56,7 @@ function App() {
   return (
     <div className="App">
       <Navigation />
+      <Calendar />
     </div>
   );
 }
