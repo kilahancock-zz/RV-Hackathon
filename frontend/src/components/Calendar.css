@@ -1,0 +1,63 @@
+#calendar {
+    width: 15%;
+    height: 92%;
+}
+
+.table {
+    width: auto;
+    table-layout: fixed;
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: text-top;
+    border-collapse: collapse;
+    color: white;
+}
+
+.table td, .table th {
+    padding: 0.0rem;
+    vertical-align: top;
+    border: 1px solid #575757;
+}
+
+td.timeDisplay {
+    width: 0.5rem;
+    font-size: x-small;
+    border: 1px solid #575757;
+}
+
+.subIntervalTimeDisplay {
+    width: 1.7rem;
+    border: 1px solid #575757;
+    border-collapse: collapse;
+}
+
+.innerTable {
+    width: 2.5rem;
+    height: 4.1rem;
+    padding: 0rem;
+    border: 1px solid #575757;
+}
+
+.innerSub {
+    border: 1px solid #575757;
+}
+
+#timeSlots tr:nth-child(even){
+    background-color: #242424;
+}
+
+#timeSlots tr:nth-child(odd){
+    background-color: #3b3b3b;
+}
+
+#timeSlots tr:hover {
+    background-color: #ddd;
+}
+
+#timeSlots th {
+    text-align: center;
+    background-color: #bf0b0b;
+    color: white;
+    border: 1px solid #575757;
+}
+  
