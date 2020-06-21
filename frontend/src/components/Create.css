@@ -1,0 +1,59 @@
+.draw {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.drawHead {
+    margin: 30px;
+}
+
+.red {
+    background-color: #ff0000;
+    width: 8%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.blue {
+    background-color: #0000ff;
+    width: 8%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.green {
+    background-color: #008000;
+    width: 8%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pink {
+    background-color: #ff69b4;
+    width: 8%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.purple {
+    background-color: #800080;
+    width: 8%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.orange {
+    background-color: #ffa500;
+    width: 8%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}

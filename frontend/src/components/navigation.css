@@ -1,8 +1,26 @@
 .nav {
     width: 100%;
-    color: red;
+    color: #e34949;
 }
 
-#navbar {
-    width: 100%;
+a {
+  color: #e34949;
+  text-decoration: underline;
+}
+
+#basic-navbar-nav {
+  float: right;
+}
+
+.login {
+  margin-left: 150px;
+}
+
+.navbar-collapse {
+  background-color: #fff;
+}
+
+.search {
+  background-color: #000;
+  border-color: #fff;
 }
