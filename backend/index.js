@@ -37,6 +37,7 @@ app.get("/newUser/:message", (req, res) => {
 
 //check to see if a user currently exists in the DB.
 app.get("/existUser/:message", (req, res) => {
+    console.log("BOOM");
     let email = req.params.message;
     let queryStr = "SELECT * FROM Test_Table WHERE email='" + email + "';";
     console.log(queryStr);

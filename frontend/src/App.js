@@ -87,7 +87,7 @@ class App extends Component {
                 await fetch(queryStr)
                     .then(response => response.json())
                     .then(data => {
-                        //console.log(data);
+                        console.log(data);
                         exists = data.length > 0;
                         if (exists) {
                             console.log("a user with " + emailAddress + " already exists.");
@@ -127,7 +127,7 @@ class App extends Component {
     //@param int section: 0=creative, 1=food, 2=entertainment, 3=workout.
     //@param int additional: by how much do you wish to increase the chosen counter in the DB.
     //@returns null
-        async updateUserStats(userId, section, additional) {
+        static async updateUserStats(userId, section, additional) {
             let queryStr = 'http://localhost:3000/updateUser/' + userId + "+" + section + "+" + additional;
             await fetch(queryStr)
                 .then(data => {});
@@ -212,17 +212,16 @@ class App extends Component {
 
     nextStepsLogin(state) {
       console.log(state);
-      if (this.alreadyExistUser(state.email)) {
-        let human = this.loginUser(state.email, state.password).then(
-          () => {
-            console.log(human);
-          }
-        );
-        return <Redirect to="/" />
-      } else {
-        console.log("Email doesn't exists");
-      }
-
+      this.alreadyExistUser(state.email)
+          .then(exists => {
+              if (exists) {
+                  this.loginUser(state.email, state.password)
+                      .then((human) => {
+                          console.log(human);
+                          return <Redirect to="/" />
+                      });
+              }
+          });
     }
 
 
