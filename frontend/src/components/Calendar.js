@@ -65,8 +65,8 @@ class Calendar extends Component {
 
             return (
                 <div>
-                    <div class={"spacer halfHeight-" + spannerSizeTop}></div>
-                    <div class={"calendarWorkBubble halfHeight-" + bubbleHeight}>{startTime + "-" + endTime + " " + meetingInfo.title}</div>
+                    <div className={"spacer halfHeight-" + spannerSizeTop}></div>
+                    <div className={"calendarWorkBubble halfHeight-" + bubbleHeight}>{startTime + "-" + endTime + " " + meetingInfo.title}</div>
                 </div>
             )
         })
@@ -118,8 +118,8 @@ class Calendar extends Component {
    render() {        
         return (
             <div id="calendar">
-                <div class="calendarTitle">Calendar</div>
-                <div class="calendarBody">
+                <div className="calendarTitle">Calendar</div>
+                <div className="calendarBody">
                     {this.renderTableData()}
                 </div>
             </div>
