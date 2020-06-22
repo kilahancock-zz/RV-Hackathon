@@ -4,9 +4,9 @@
     margin-top: 30px;
 }
 
-a {
-  color: #e34949;
-  text-decoration: underline;
+.nav a {
+  color: #e34949; 
+  text-decoration: none;
 }
 
 #basic-navbar-nav {

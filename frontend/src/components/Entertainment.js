@@ -54,7 +54,7 @@ class Entertainment extends Component {
         return(
             <div>
             <Container>
-            <Tabs defaultActiveKey="gifs" id="uncontrolled-tab-example">
+            <Tabs className="tab" defaultActiveKey="gifs" id="uncontrolled-tab-example">
                 <Tab eventKey="memes" title="Memes">
                     <div>{this.state.memeCards}</div>
                 </Tab>

@@ -24,3 +24,11 @@
     margin: 20px;
     display: inline-block;
 }
+
+.tab a {
+    color: #fff;
+}
+
+a:hover {
+    color: #000;
+}

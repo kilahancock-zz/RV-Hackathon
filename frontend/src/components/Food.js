@@ -43,7 +43,7 @@ class Food extends Component {
     render() {
         return(
             <Container>
-            <Tabs defaultActiveKey="recipes" id="uncontrolled-tab-example">
+            <Tabs className="eat" defaultActiveKey="recipes" id="uncontrolled-tab-example">
                 <Tab eventKey="recipes" title="Recipes">
                     <div>hi</div>
                 </Tab>

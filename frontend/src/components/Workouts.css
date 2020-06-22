@@ -20,3 +20,11 @@
 body {
     font-family: 'Oswald', sans-serif;
 }
+
+.stretch a {
+    color: #fff;
+}
+
+a:hover {
+    color: #000;
+}
