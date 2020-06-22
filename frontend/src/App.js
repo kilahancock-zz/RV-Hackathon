@@ -13,7 +13,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom';
 
 
@@ -38,7 +39,9 @@ class App extends Component {
         last: "",
         email: "",
         password: ""
-      }
+      },
+
+      redirect_to_home: "/"
     };
   }
 
@@ -50,7 +53,7 @@ class App extends Component {
     // @param String emailAddress: the chosen email for the new user.
     // @param String password: the chosen password for the new user.
     // @returns boolean success: whether or not user-creation was successful.
-        static async createNewUser(firstName, lastName, emailAddress, password) {
+        async createNewUser(firstName, lastName, emailAddress, password) {
             let success = false;
             if (firstName.includes("+")) {
                 throw ("First name cannot include '+'.");
@@ -75,7 +78,7 @@ class App extends Component {
     //@description: Checks to see if a user already exists. Call this function before deciding an attempt at login.
     //@param String emailAddress: self-explanatory.
     //@returns boolean exists: whether or not the email address was found in the database.
-        static async alreadyExistUser(emailAddress) {
+        async alreadyExistUser(emailAddress) {
             let exists = false;
             if (emailAddress.includes("+")) {
                 throw ("Email address cannot include '+'.");
@@ -100,7 +103,7 @@ class App extends Component {
     //@param String emailAddress: self-explanatory.
     //@param String password: self-explanatory.
     //@returns JSON: person object if login successful.
-        static async loginUser(emailAddress, password) {
+        async loginUser(emailAddress, password) {
             let human = null;
             if (emailAddress.includes("+")) {
                 throw ("Email address cannot include '+'.");
@@ -144,7 +147,7 @@ class App extends Component {
       this.setState ({
         userInfo: updatedState,
         user_logged_in: true
-      }, () => console.log(this.state));
+      }, () => this.nextStepsSignup(this.state.userInfo));
     };
 
     updateLoginState = (_email, _password) => {
@@ -171,8 +174,20 @@ class App extends Component {
 
       this.setState ({
         userData: updatedState
-      }, () => console.log(this.state));
+      });
     };
+
+    nextStepsSignup(state) {
+      console.log(state);
+      if (!this.alreadyExistUser(state.email)) {
+        this.createNewUser(state.first, state.last, state.email, state.password);
+        return <Redirect to={this.state.redirect} />
+      } else {
+        console.log("Email already exists");
+      }
+
+
+    }
 
 
 

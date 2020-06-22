@@ -2,7 +2,7 @@ version: "3"
 services:
   backend:
     build: ./backend
-    ports: 
+    ports:
       - 3000:3000
     environment:
       - PORT=3000
@@ -16,7 +16,7 @@ services:
       - 3000
   frontend:
     build: ./frontend
-    ports: 
+    ports:
       - 80:80
     environment:
       - PORT=80
@@ -25,13 +25,13 @@ services:
       - '/home/app/node_modules'
     tty: true
   mysql:
-      image: mysql:5
-      ports:
-        - 33060:3306
-      environment:
-        MYSQL_ROOT_PASSWORD: password
-        MYSQL_DATABASE: testDB
-      volumes:
-        - ./sql:/docker-entrypoint-initdb.d
-      expose:
-        - 3306
+    image: mysql:5
+    ports:
+      - 33060:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: testDB
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+    expose:
+      - 3306
