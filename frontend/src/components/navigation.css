@@ -25,3 +25,9 @@
   background-color: #efb3ab;
   border-radius: 0.5rem;
 }
+
+#hi {
+  font-size: 100%;
+  display: inline-block;
+  margin-right: 2%;
+}

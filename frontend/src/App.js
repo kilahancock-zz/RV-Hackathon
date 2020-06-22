@@ -88,7 +88,7 @@ class App extends Component {
                 await fetch(queryStr)
                     .then(response => response.json())
                     .then(data => {
-                        //console.log(data);
+                        console.log(data);
                         exists = data.length > 0;
                         if (exists) {
                             console.log("a user with " + emailAddress + " already exists.");
@@ -128,7 +128,7 @@ class App extends Component {
     //@param int section: 0=creative, 1=food, 2=entertainment, 3=workout.
     //@param int additional: by how much do you wish to increase the chosen counter in the DB.
     //@returns null
-        async updateUserStats(userId, section, additional) {
+        static async updateUserStats(userId, section, additional) {
             let queryStr = 'http://localhost:3000/updateUser/' + userId + "+" + section + "+" + additional;
             await fetch(queryStr)
                 .then(data => {});
@@ -293,7 +293,7 @@ render () {
   return (
     <Router>
     <div className="App">
-      <Navigation />
+      <Navigation name={this.state.userInfo.first}/>
       <div className="sideBySide">
       <Calendar userEmail={this.state.userInfo.email}/>
       <Switch>
