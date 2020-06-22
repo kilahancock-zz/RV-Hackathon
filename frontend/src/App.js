@@ -196,7 +196,7 @@ render () {
     <Router>
     <div className="App">
       <Navigation  />
-      <div class="sideBySide">
+      <div className="sideBySide">
         <Calendar />
         <Switch>
           <Route exact path="/">
