@@ -6,7 +6,8 @@ import './Food.css';
 class Food extends Component {
     state = {
         jokeCards: [],
-        factCards: []
+        factCards: [],
+        tally: 0
     }
     async fetchJokes() {
         let jokes = [];
@@ -40,19 +41,29 @@ class Food extends Component {
         this.fetchFacts()
     }
 
+    tabClicked() {
+      let currTally = this.state.tally;
+      console.log(currTally);
+      let newTally = currTally + 1;
+
+      this.setState({
+          tally: newTally
+      });
+    }
+
 
     render() {
         return(
             <Container>
-            <Tabs className="eat" defaultActiveKey="recipes" id="uncontrolled-tab-example">
+            <Tabs onClick={this.tabClicked} className="eat" defaultActiveKey="recipes" id="uncontrolled-tab-example">
                 <Tab eventKey="recipes" title="Recipes">
                     <div>hi</div>
                 </Tab>
-                <Tab eventKey="jokes" title="Jokes">
+                <Tab onClick={this.tabClicked} eventKey="jokes" title="Jokes">
                     <h1>Jokes</h1>
                     <div>{this.state.jokeCards}</div>
                 </Tab>
-                <Tab eventKey="funFacts" title="Fun Facts">
+                <Tab onClick={this.tabClicked} eventKey="funFacts" title="Fun Facts">
                     <h1>Fun Facts</h1>
                     <div>{this.state.factCards}</div>
                 </Tab>

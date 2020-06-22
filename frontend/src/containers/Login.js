@@ -1,42 +1,54 @@
-import React, { useState } from "react";
+import React, {Component} from "react";
 import { Button, FormGroup, FormControl, FormLabel, Container} from "react-bootstrap";
 import "./Login.css";
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+class Login extends Component {
+  constructor(props) {
+    super(props);
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
+    this.state = {
+      email: "",
+      password: ""
+    }
   }
 
-  function handleSubmit(event) {
-    console.log(this.state.email);
-    // event.preventDefault();
+  validateForm() {
+    return this.state.email.length > 0 && this.state.password.length > 0;
   }
 
+  setEmail = (event) => {
+    this.setState ({
+      email: event.target.value
+    });
+  }
+
+  setEmail = (event) => {
+    this.setState ({
+      email: event.target.value
+    });
+  }
+
+render() {
   return (
     <Container>
     <div className="Login">
-      <form onSubmit={handleSubmit}>
+      <form>
         <FormGroup controlId="email" bsSize="large">
         <FormLabel>Email</FormLabel>
           <FormControl
             autoFocus
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            type="text"
+            onChange={this.setEmail}
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
           <FormLabel>Password</FormLabel>
           <FormControl
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            type="password"
+            type="text"
+            onChange={this.setPassword}
           />
         </FormGroup>
-        <Button variant="flat" block bsSize="large" disabled={!validateForm()}>
+        <Button onClick={this.props.updateLogin(this.state.email, this.state.password)} variant="flat" block bsSize="large" disabled={!this.validateForm}>
           Login
         </Button>
       </form>
@@ -44,3 +56,6 @@ export default function Login() {
     </Container>
   );
 }
+}
+
+export default Login;

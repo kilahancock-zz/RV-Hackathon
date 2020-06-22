@@ -50,17 +50,19 @@ class Entertainment extends Component {
         this.fetchGifs();
     }
 
+
+
     render() {
         return(
             <Container>
-            <Tabs className="tab" defaultActiveKey="gifs" id="uncontrolled-tab-example">
+            <Tabs onClick={this.props.entTabClicked} className="tab" defaultActiveKey="gifs" id="uncontrolled-tab-example">
                 <Tab eventKey="memes" title="Memes">
                     <div>{this.state.memeCards}</div>
                 </Tab>
-                <Tab eventKey="videos" title="Videos">
+                <Tab onClick={this.props.entTabClicked} eventKey="videos" title="Videos">
                     <h1>Embedded Youtube Videos</h1>
                 </Tab>
-                <Tab eventKey="gifs" title="GifHub">
+                <Tab onClick={this.props.entTabClicked} eventKey="gifs" title="GifHub">
                     <div>{this.state.gifCards}</div>
                 </Tab>
             </Tabs>

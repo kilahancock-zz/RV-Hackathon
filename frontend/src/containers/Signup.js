@@ -8,16 +8,18 @@ import {
   Container
 } from "react-bootstrap";
 import "./Signup.css";
+import App from "../App.js";
+
+
 
 
 class Signup extends Component {
-
   constructor(props) {
     super(props);
 
     this.state = {
-      first_name: "",
-      last_name: "",
+      first: "",
+      last: "",
       email: "",
       password: "",
      };
@@ -25,13 +27,13 @@ class Signup extends Component {
 
   handleFirstChange = (event) => {
     this.setState ({
-      first_name: event.target.value
+      first: event.target.value
     });
   }
 
   handleLastChange = (event) => {
     this.setState ({
-      last_name: event.target.value
+      last: event.target.value
     });
   }
 
@@ -47,20 +49,15 @@ class Signup extends Component {
     });
   }
 
-  handleSubmit = (event) => {
-    console.log("here");
-  }
-
 
   render() {
     return (
       <Container>
       <div className="Signup">
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <FormGroup controlId="first_name" bsSize="large">
           <FormLabel>First Name</FormLabel>
           <FormControl
-            placeholder= " "
             autoFocus
             type="text"
             onChange={this.handleFirstChange}
@@ -69,7 +66,6 @@ class Signup extends Component {
         <FormGroup controlId="last_name" bsSize="large">
           <FormLabel>Last Name</FormLabel>
           <FormControl
-            autoFocus
             type="text"
             onChange={this.handleLastChange}
           />
@@ -77,7 +73,6 @@ class Signup extends Component {
         <FormGroup controlId="email" bsSize="large">
           <FormLabel>Email</FormLabel>
           <FormControl
-            autoFocus
             type="email"
             onChange={this.handleUserChange}
           />
@@ -89,7 +84,8 @@ class Signup extends Component {
             onChange={this.handlePassChange}
           />
           </FormGroup>
-          <Button
+          <Button onClick={() =>
+            this.props.update(this.state.first, this.state.last, this.state.email, this.state.password)}
           block
           variant="flat"
           bsSize="large">Submit
