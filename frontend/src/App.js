@@ -8,6 +8,7 @@ import Food from './components/Food.js'
 import Workouts from './components/Workouts.js';
 import Create from './components/Create.js';
 import Signup from './containers/Signup.js';
+import Calendar from './components/Calendar.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -180,31 +181,33 @@ render () {
     <Router>
     <div className="App">
       <Navigation  />
-      <Switch>
-        <Route exact path="/">
-          <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.ent_data}
-          snack_data= {this.state.snack_data}/>
-        </Route>
-        <Route path="/signup">
-          <Signup update={this.updateUserState}/>
-        </Route>
-        <Route path="/login">
-          <Login updateLogin= {this.updateLoginState}/>
-        </Route>
-        <Route path="/Laugh">
-          <Entertainment entClicked= {this.entClicked}/>
-        </Route>
-        <Route path="/Eat">
-          <Food />
-        </Route>
-        <Route path="/Stretch">
-          <Workouts />
-        </Route>
-        <Route path="/Create">
-          <Create />
-        </Route>
+      <div class="sideBySide">
+        <Calendar />
+        <Switch>
+          <Route exact path="/">
+            <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.ent_data}
+            snack_data= {this.state.snack_data}/>
+          </Route>
+          <Route path="/signup">
+            <Signup update={this.updateUserState}/>
+          </Route>
+          <Route path="/login">
+            <Login updateLogin= {this.updateLoginState}/>
+          </Route>
+          <Route path="/Laugh">
+            <Entertainment entClicked= {this.entClicked}/>
+          </Route>
+          <Route path="/Eat">
+            <Food />
+          </Route>
+          <Route path="/Stretch">
+            <Workouts />
+          </Route>
+          <Route path="/Create">
+            <Create />
+          </Route>
         </Switch>
-
+      </div>
     </div>
     </Router>
   );
