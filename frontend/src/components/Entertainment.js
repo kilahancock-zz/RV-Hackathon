@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import {Tabs, Tab, Container} from 'react-bootstrap';
 import axios from 'axios';
 import './Entertainment.css'
+import HtmlComponent from './HtmlComponent';
 
 class Entertainment extends Component {
     state = {
         memeCards: [],
-        gifCards: []
+        gifCards: [],
+        videoCards: [],
     }
     async fetchMemes() {
         let titles = [];
@@ -62,24 +64,27 @@ class Entertainment extends Component {
                 for (i = 0; i < data.length; i++) {
                     frameArray.push(data[i].embed.html);
                 }
+                console.log(frameArray)
+                this.setState({videoCards: frameArray});
+                console.log(this.state.videoCards);
             });
-        return frameArray;
     }
 
     componentDidMount() {
         this.fetchMemes();
         this.fetchGifs();
+        this.getVideos(1, 3, "funny");
     }
 
     render() {
         return(
             <Container>
-            <Tabs className="tab" defaultActiveKey="gifs" id="uncontrolled-tab-example">
+            <Tabs className="tab" defaultActiveKey="memes" id="uncontrolled-tab-example">
                 <Tab eventKey="memes" title="Memes">
                     <div>{this.state.memeCards}</div>
                 </Tab>
                 <Tab eventKey="videos" title="Videos">
-                    <h1>Embedded Youtube Videos</h1>
+                    {this.state.videoCards.map((object, i) => <HtmlComponent body={object} key={i} />)}
                 </Tab>
                 <Tab eventKey="gifs" title="GifHub">
                     <div>{this.state.gifCards}</div>
