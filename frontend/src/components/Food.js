@@ -12,7 +12,7 @@ class Food extends Component {
         let jokes = [];
         let tempCards = [];
         for (let i = 0; i < 25; i++) {
-            await axios.get('https://api.spoonacular.com/food/jokes/random?apiKey=d62f9a4cef894a6aa8fc413510e803ea')
+            await axios.get('https://api.spoonacular.com/food/jokes/random?apiKey=c9aeef669de34d9eb4e0016f7beb018b')
             .then(res => {
                 jokes.push(res.data.text);
                 let temp = <div className="jokeCard"><h3>{res.data.text}</h3></div>
@@ -25,7 +25,7 @@ class Food extends Component {
         let facts = [];
         let tempCards = [];
         for (let i = 0; i < 25; i++) {
-            await axios.get('https://api.spoonacular.com/food/trivia/random?apiKey=d62f9a4cef894a6aa8fc413510e803ea')
+            await axios.get('https://api.spoonacular.com/food/trivia/random?apiKey=c9aeef669de34d9eb4e0016f7beb018b')
             .then(res => {
                 facts.push(res.data.text);
                 let temp = <div className="factCard"><h3>{res.data.text}</h3></div>
