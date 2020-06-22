@@ -26,6 +26,9 @@ class Home extends Component {
             return(
               <Container className="welcome">
               <h1 className="welcome">Welcome to RedRelax.</h1>
+
+              <h3 className="burb">The break activity hub of your dreams.</h3>
+            
               </Container>
               );
           }

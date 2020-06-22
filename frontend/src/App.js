@@ -26,13 +26,13 @@ class App extends Component {
     this.state = {
 
       userData : {
-        ent_data: 10,
-        snack_data: 5,
-        workout_data: 3,
-        create_data: 1
+        ent_data: 0,
+        snack_data: 0,
+        workout_data: 0,
+        create_data: 0
       },
 
-      user_logged_in: true,
+      user_logged_in: false,
 
       userInfo : {
         first: "",
@@ -256,10 +256,37 @@ render () {
     return (
       <Router>
         <Redirect to="/" />
-        <Route exact path="/">
-          <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.ent_data}
-          snack_data= {this.state.snack_data}/>
-        </Route>
+        <div className="App">
+          <Navigation />
+          <div className="sideBySide">
+          <Calendar userEmail={this.state.userInfo.email}/>
+          <Switch>
+            <Route exact path="/">
+              <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.userData.ent_data}
+              snack_data={this.state.userData.snack_data} workout_data={this.state.userData.workout_data}
+              create_data={this.state.userData.create_data}/>
+            </Route>
+            <Route path="/signup">
+              <Signup update={this.updateUserState}/>
+            </Route>
+            <Route path="/login">
+              <Login updateLogin= {this.updateLoginState}/>
+            </Route>
+            <Route path="/Laugh">
+              <Entertainment entClicked= {this.entClicked}/>
+            </Route>
+            <Route path="/Eat">
+              <Food foodClicked= {this.foodClicked}/>
+            </Route>
+            <Route path="/Stretch">
+              <Workouts workClicked= {this.workClicked}/>
+            </Route>
+            <Route path="/Create">
+              <Create createClicked= {this.createClicked}/>
+            </Route>
+            </Switch>
+        </div>
+        </div>
       </Router>
     );
   }
