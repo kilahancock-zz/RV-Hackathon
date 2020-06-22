@@ -20,7 +20,7 @@ class Create extends Component {
 
   render() {
           return(
-            <div>
+            <div class="container">
               <h1 className="drawHead">
                 Draw Something!
               </h1>

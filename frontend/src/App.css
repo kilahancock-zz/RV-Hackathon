@@ -38,3 +38,16 @@
     transform: rotate(360deg);
   }
 }
+
+.sideBySide {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.calendar {
+  flex: 0 0 15%;
+}
+
+.container {
+  flex: 1;
+}

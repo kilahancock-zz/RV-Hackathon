@@ -44,7 +44,7 @@ class Workouts extends Component {
   render() {
 
           return(
-            <div>
+            <div class="container">
               <Container>
                 <Tabs className="stretch" defaultActiveKey="videos" id="uncontrolled-tab-example">
                   <Tab eventKey="videos" title="Videos">

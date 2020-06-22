@@ -52,7 +52,6 @@ class Entertainment extends Component {
 
     render() {
         return(
-            <div>
             <Container>
             <Tabs className="tab" defaultActiveKey="gifs" id="uncontrolled-tab-example">
                 <Tab eventKey="memes" title="Memes">
@@ -66,7 +65,6 @@ class Entertainment extends Component {
                 </Tab>
             </Tabs>
             </Container>
-            </div>
         );
     }
 }
