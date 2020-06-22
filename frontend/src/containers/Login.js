@@ -18,7 +18,7 @@ class Login extends Component {
     });
   }
 
-  setEmail = (event) => {
+  setPassword = (event) => {
     this.setState ({
       password: event.target.value
     });
