@@ -12,7 +12,7 @@
 }
 
 .memeCard {
-    background-color: #eeee;
+    background-color: #fff;
     border-radius: 10px;
     margin: 20px;
     padding: 20px;
@@ -27,6 +27,10 @@
 
 .tab a {
     color: #fff;
+}
+
+.tab {
+    margin-top: 30px;
 }
 
 a:hover {
