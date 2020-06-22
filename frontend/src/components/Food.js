@@ -13,26 +13,52 @@ class Food extends Component {
     async fetchJokes() {
         let jokes = [];
         let tempCards = [];
-        for (let i = 0; i < 25; i++) {
-            await axios.get('https://api.spoonacular.com/food/jokes/random?apiKey=c9aeef669de34d9eb4e0016f7beb018b')
-            .then(res => {
-                jokes.push(res.data.text);
-                let temp = <div className="jokeCard"><h3>{res.data.text}</h3></div>
+        for (let i = 0; i < 3; i++) {
+            fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/jokes/random", {
+	            "method": "GET",
+	            "headers": {
+		            "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+		            "x-rapidapi-key": "30dec66674msh6e61f03066844bap1587dejsnd52025e3e1f9"
+                }
+            })
+            .then(response => {
+	            return response.json();
+            })
+            .then (res => {
+                console.log(res);
+                jokes.push(res.text);
+                let temp = <div className="jokeCard"><h3>{res.text}</h3></div>
                 tempCards.push(temp);
             })
+            .catch(err => {
+	            console.log(err);
+            });
         }
         this.setState({jokeCards: tempCards})
     }
     async fetchFacts() {
         let facts = [];
         let tempCards = [];
-        for (let i = 0; i < 25; i++) {
-            await axios.get('https://api.spoonacular.com/food/trivia/random?apiKey=c9aeef669de34d9eb4e0016f7beb018b')
-            .then(res => {
-                facts.push(res.data.text);
-                let temp = <div className="factCard"><h3>{res.data.text}</h3></div>
+        for (let i = 0; i < 3; i++) {
+            fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/trivia/random", {
+	            "method": "GET",
+	            "headers": {
+		            "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+		            "x-rapidapi-key": "30dec66674msh6e61f03066844bap1587dejsnd52025e3e1f9"
+                }
+            })
+            .then(response => {
+	            return response.json();
+            })
+            .then (res => {
+                console.log(res);
+                facts.push(res.text);
+                let temp = <div className="factCard"><h3>{res.text}</h3></div>
                 tempCards.push(temp);
             })
+            .catch(err => {
+	            console.log(err);
+            });
         }
         this.setState({factCards: tempCards})
     }
