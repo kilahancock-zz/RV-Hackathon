@@ -17,7 +17,12 @@
 }
 
 .eat a {
-    color: #fff;
+    color:
+    #fff;
+}
+
+.eat {
+    margin-top: 30px;
 }
 
 a:hover {

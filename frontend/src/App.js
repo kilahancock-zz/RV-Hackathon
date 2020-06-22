@@ -17,18 +17,8 @@ import {
   Link
 } from 'react-router-dom';
 
-//Call this function to get data from outlook calendar.
-function getOutlookData() {
-  let endpoint = 'http://localhost:3000/getOutlookData';
-  fetch(endpoint).then(response => {
-    let returnValue = response.json();
-    console.log(returnValue);
-  });
-}
 
 function App() {
-
-  //getVideos(1, 5, "funny").then((response) => console.log(response));
 
   /*
     //EXAMPLE OF USER-RELATED BACKEND CALLS----------------------------------
@@ -56,7 +46,6 @@ function App() {
     });
     //-------------------------------------------------------------------------
 */
-    getOutlookData();
 
   return (
     <Router>
