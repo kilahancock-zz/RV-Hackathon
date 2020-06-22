@@ -3,6 +3,7 @@ const process = require("process");
 const mysql = require("mysql");
 const request = require('request');
 const cors = require("cors");
+const Vimeo = require('vimeo').Vimeo;
 
 const app = new express();
 
@@ -136,6 +137,31 @@ app.get("/getOutlookData", (req, res) => {
   request(options, function(err, response, body) {
     res.send(body);
   });
+});
+
+app.get("/getVideos/:message", (req, res) => {
+    let parameters = req.params.message.split("+");
+    let pageNum = parameters[0];
+    let perPage = parameters[1];
+    let searchStr = parameters[2];
+    let vimeoId = "5f5057d7d3a283bb01b5a964273ee587a85648d5";
+    let vimeoToken = "26236e54f98703dfb3317bed2c6f8046";
+    let vimeoSecret = "iaAZgfGVjwUV21OBBMivW6nncYibdBImngldLmVkrQ1BaMiZ5E/zF+OZ05fC1Q8mjdTwITPF5ez00gGRhP35ZEwkF4hdZj3EoSVC/1PWKyW1DptvUwtU1rkqZdgQul7g";
+    let client = new Vimeo(vimeoId, vimeoSecret, vimeoToken);
+
+    let options  = {
+        method: "GET",
+        url: "https://api.vimeo.com/",
+        path: "videos?direction=desc&filter=CC&page=" + pageNum + "&per_page=" + perPage + "&query=" + searchStr
+    };
+
+    client.request(options, function (error, body, status_code, headers) {
+        if (error) {
+            console.log(error);
+        }
+        console.log(body);
+        res.send(body);
+    });
 });
 
 app.listen(process.env.PORT || 3000, () => {

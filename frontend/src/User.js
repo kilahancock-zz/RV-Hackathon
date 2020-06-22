@@ -1,5 +1,5 @@
 
-export default class User {
+/*export default class User() {
 
 //@description: Creates a new user in the system.
 //@param String firstName: first name of the new user.
@@ -86,4 +86,4 @@ export default class User {
         await fetch(queryStr)
             .then(data => {});
     }
-}
+}*/
