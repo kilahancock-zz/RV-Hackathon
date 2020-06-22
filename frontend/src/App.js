@@ -26,13 +26,13 @@ class App extends Component {
     this.state = {
 
       userData : {
-        ent_data: 0,
-        snack_data: 0,
-        workout_data: 0,
-        create_data: 0
+        ent_data: 10,
+        snack_data: 5,
+        workout_data: 3,
+        create_data: 1
       },
 
-      user_logged_in: false,
+      user_logged_in: true,
 
       userInfo : {
         first: "",
@@ -260,8 +260,9 @@ render () {
       <Calendar />
       <Switch>
         <Route exact path="/">
-          <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.ent_data}
-          snack_data= {this.state.snack_data}/>
+          <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.userData.ent_data}
+          snack_data={this.state.userData.snack_data} workout_data={this.state.userData.workout_data}
+          create_data={this.state.userData.create_data}/>
         </Route>
         <Route path="/signup">
           <Signup update={this.updateUserState}/>
