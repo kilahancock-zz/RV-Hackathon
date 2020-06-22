@@ -22,8 +22,6 @@ class Workouts extends Component {
         for (let i = 0; i < 100; i++) {
           console.log(res.data.results[i].image);
           images.push(res.data.results[i].image);
-          //let temp = <div><img className="exercises" alt="exercise" src={images[i]}/></div>
-          //cards.push(temp);
         }
         let count = 0;
         for (let i = 0; i < 25; i++) {
@@ -48,7 +46,7 @@ class Workouts extends Component {
           return(
             <div class="container">
               <Container>
-                <Tabs defaultActiveKey="videos" id="uncontrolled-tab-example">
+                <Tabs className="stretch" defaultActiveKey="videos" id="uncontrolled-tab-example">
                   <Tab eventKey="videos" title="Videos">
                     <h3 className="exHead">Videos from RV's Very Own: Nick Trull</h3>
                     <Row>
