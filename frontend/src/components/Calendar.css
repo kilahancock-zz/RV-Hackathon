@@ -13,17 +13,28 @@
 .calendarBody {
     height: 88vh;
     border: 1px solid #575757;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     background-color: #242424;
+}
+
+.calendarWorkBubble:hover {
+    background-color: green;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: string;
+    min-height: 5.5vh;
 }
 
 .calendarWorkBubble {
     border: 1px solid #575757;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     background-color: #3b3b3b;
     color: white;
     text-align: left;
     font-size: smaller;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .halfHeight-5 {

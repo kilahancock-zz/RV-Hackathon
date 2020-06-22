@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import {Tabs, Tab, Container} from 'react-bootstrap';
+import {Tabs, Tab, Container, Row, Col} from 'react-bootstrap';
 import axios from 'axios';
 import './Food.css';
+import HtmlComponent from './HtmlComponent.js';
 
 class Food extends Component {
     state = {
         jokeCards: [],
         factCards: [],
-        tally: 0
+        recipeCards: []
     }
     async fetchJokes() {
         let jokes = [];
@@ -36,9 +37,66 @@ class Food extends Component {
         this.setState({factCards: tempCards})
     }
 
+    async getRecipes() {
+        let titles = []
+        let ids = []
+        let images = []
+        let descriptions = []
+        let cards = []
+        fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=2&tags=quick", {
+	        "method": "GET",
+	        "headers": {
+		        "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+		        "x-rapidapi-key": "30dec66674msh6e61f03066844bap1587dejsnd52025e3e1f9"
+	        }
+        })
+        .then(response => {
+	        return response.json()
+        })
+        .then(response => {
+            for (let i = 0; i < 2; i++) {
+                titles.push(response.recipes[i].title)
+                images.push(response.recipes[i].image)
+                ids.push(response.recipes[i].id)
+                fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + ids[i] +"/summary", {
+	                "method": "GET",
+	                "headers": {
+		                "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+		                "x-rapidapi-key": "30dec66674msh6e61f03066844bap1587dejsnd52025e3e1f9"
+	                }
+                })
+                .then(response => {
+                    return response.json()
+                })
+                .then(response => {
+                    descriptions.push(response.summary);
+                    let temp = <div className="recipe">
+                                <h3 className="recipeTitle">{titles[i]}</h3>
+                                <Row>
+                                    <Col>
+                                        <img src={images[i]} alt="img"/>
+                                    </Col>
+                                    <Col>
+                                        <HtmlComponent body={descriptions[i]}/>
+                                    </Col>
+                                </Row></div>
+                    cards.push(temp);
+                    if (i == 1) {
+                        this.setState({recipeCards: cards})
+                    }
+                })
+            }
+            console.log(descriptions)
+        })
+        .catch(err => {
+	        console.log(err);
+        });
+    }
+
     componentDidMount() {
         this.fetchJokes()
         this.fetchFacts()
+        this.getRecipes()
     }
 
     tabClicked() {
@@ -57,7 +115,7 @@ class Food extends Component {
             <Container>
             <Tabs onClick={this.tabClicked} className="eat" defaultActiveKey="recipes" id="uncontrolled-tab-example">
                 <Tab eventKey="recipes" title="Recipes">
-                    <div>hi</div>
+                    <div>{this.state.recipeCards}</div>
                 </Tab>
                 <Tab onClick={this.tabClicked} eventKey="jokes" title="Jokes">
                     <h1>Jokes</h1>

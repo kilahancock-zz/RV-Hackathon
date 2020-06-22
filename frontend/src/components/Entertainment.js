@@ -45,6 +45,27 @@ class Entertainment extends Component {
         })
     }
 
+    //@description: Call this function to get videos from Vimeo.
+    //@param int pageNum: which page number to query from.
+    //@param int perPage: how large a page is, this will be how many videos are returned.
+    //@param String searchStr: keywords to help Vimeo find suitable videos.
+    //@returns array[iframes] frameArray: array of embed-able iframes for matched videos.
+    async getVideos(pageNum, perPage, searchStr) {
+        let endpoint = 'http://localhost:3000/getVideos';
+        let params = "/" + pageNum + "+" + perPage + "+" + searchStr;
+        let frameArray = [];
+        await fetch(endpoint + params)
+            .then(response => response.json())
+            .then(json => json.data)
+            .then(data => {
+                let i;
+                for (i = 0; i < data.length; i++) {
+                    frameArray.push(data[i].embed.html);
+                }
+            });
+        return frameArray;
+    }
+
     componentDidMount() {
         this.fetchMemes();
         this.fetchGifs();
