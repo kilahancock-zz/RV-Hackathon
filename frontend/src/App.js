@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import Navigation from './components/Navigation.js';
-import Calendar from './components/Calendar.js';
 import Login from './containers/Login.js';
 import Home from './components/Home.js';
 import Entertainment from './components/Entertainment.js';
@@ -106,15 +105,11 @@ async function updateUserStats(userId, section, additional) {
 //Call this function to get data from outlook calendar
 function getOutlookData() {
   let endpoint = 'http://localhost:3000/getOutlookData';
-  fetch(endpoint).then(response => {
-    let returnValue = response.json();
-    console.log(returnValue);
-  });
+  fetch(endpoint).then(response => console.log(response.json()));
 }
 
 function App() {
 
-  /*
     //EXAMPLE OF USER-RELATED BACKEND CALLS----------------------------------
     alreadyExistUser("Billy@gmail.com").then(exists => {
         //if Billy doesn't already exist, create an account for him.
@@ -139,39 +134,38 @@ function App() {
        }
     });
     //-------------------------------------------------------------------------
-*/
+
     getOutlookData();
 
   return (
     <Router>
     <div className="App">
       <Navigation />
-      <div className="sideBySide">
-        <Calendar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/Laugh">
-            <Entertainment />
-          </Route>
-          <Route path="/Eat">
-            <Food />
-          </Route>
-          <Route path="/Stretch">
-            <Workouts />
-          </Route>
-          <Route path="/Create">
-            <Create />
-          </Route>
+
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/signup">
+          <Signup />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/Laugh">
+          <Entertainment />
+        </Route>
+        <Route path="/Eat">
+          <Food />
+        </Route>
+        <Route path="/Stretch">
+          <Workouts />
+        </Route>
+        <Route path="/Create">
+          <Create />
+        </Route>
         </Switch>
-      </div>
+
     </div>
     </Router>
   );

@@ -40,6 +40,7 @@ class Food extends Component {
         this.fetchFacts()
     }
 
+
     render() {
         return(
             <Container>

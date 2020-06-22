@@ -8,6 +8,7 @@ import {
 } from "react-bootstrap";
 import "./Signup.css";
 
+
 class Signup extends Component {
 
   constructor(props) {
@@ -35,7 +36,7 @@ class Signup extends Component {
 
   handleUserChange = (event) => {
     this.setState ({
-      username: event.target.value
+      email: event.target.value
     });
   }
 
@@ -46,26 +47,7 @@ class Signup extends Component {
   }
 
   handleSubmit = (event) => {
-    this.createNewUser(this.state.first_name, this.state.last_name,
-      this.state.username, this.state.password);
-  }
-
-  //call this function whenever we desire a new user in the system.
-  //and the user has provided the appropriate credentials.
-  createNewUser(firstName, lastName, emailAddress, password) {
-      if (firstName.includes("+")) {
-          console.log("First name cannot include '+'.");
-      } else if (lastName.includes("+")) {
-          console.log("Last name cannot include '+'.");
-      } else if (emailAddress.includes("+")) {
-          console.log("Email address cannot include '+'.");
-      } else if (password.includes("+")) {
-          console.log("Password cannot include '+'.");
-      } else {
-          console.log("here");
-          let queryStr = 'http://localhost:3000/newUser/' + firstName + "+" + lastName + "+" + emailAddress + "+" + password;
-          fetch(queryStr).then(response => console.log(response));
-      }
+    console.log("here");
   }
 
 

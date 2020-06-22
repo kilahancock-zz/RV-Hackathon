@@ -11,7 +11,8 @@ export default function Login() {
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
+    console.log(this.state.email);
+    // event.preventDefault();
   }
 
   return (

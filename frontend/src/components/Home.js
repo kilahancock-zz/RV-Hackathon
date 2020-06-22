@@ -4,7 +4,7 @@ import './Home.css';
 
 class Home extends Component {
     state = {
-        user_logged_in: true,
+        user_logged_in: false,
         entertainment_data: 10,
         snack_data: 4,
         workout_data: 5,
@@ -34,7 +34,6 @@ class Home extends Component {
               </Container>
               );
           }
-
     }
 }
 
