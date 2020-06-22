@@ -8,7 +8,11 @@
     max-width: 320px;
   }
 
+  .form-label {
+    color: #f5f0e3;
+  }
+
   .btn-flat {
-    background-color: #fff;
+    background-color: #4eeefa!important;
   }
 }

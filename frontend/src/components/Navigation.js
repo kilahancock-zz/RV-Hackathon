@@ -20,26 +20,7 @@ import {
 class Navigation extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      button_clicked: "stretch",
-    };
   }
-
-  handleButtonClicked = (event) => {
-    let break_category = {
-            ...this.state.button_clicked
-    };
-
-    break_category = event.currentTarget.getAttribute("category");
-
-
-    this.setState({
-        button_clicked: break_category
-    });
-  };
-
-
 
   render() {
       return(

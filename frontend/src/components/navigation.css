@@ -1,10 +1,15 @@
 .nav {
     width: 100%;
-    color: #e34949;
+    color: #dd0a35;
+}
+
+.navbar {
+  background-color: #d3f2fa!important;
+  border-radius: 0.5rem;
 }
 
 .nav a {
-  color: #e34949; 
+  color: #dd0a35; 
   text-decoration: none;
 }
 
@@ -17,10 +22,11 @@
 }
 
 .navbar-collapse {
-  background-color: #fff;
+  background-color: #4eeefa;
+  border-radius: 0.5rem;
 }
 
 .search {
   background-color: #000;
-  border-color: #fff;
+  border-color: #ffd0bc;
 }

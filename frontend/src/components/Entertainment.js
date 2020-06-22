@@ -76,17 +76,28 @@ class Entertainment extends Component {
         this.getVideos(1, 3, "funny");
     }
 
+
+
     render() {
         return(
             <Container>
+<<<<<<< HEAD
             <Tabs className="tab" defaultActiveKey="memes" id="uncontrolled-tab-example">
                 <Tab eventKey="memes" title="Memes">
                     <div>{this.state.memeCards}</div>
                 </Tab>
                 <Tab eventKey="videos" title="Videos">
                     {this.state.videoCards.map((object, i) => <HtmlComponent body={object} key={i} />)}
+=======
+            <Tabs onClick={this.props.entTabClicked} className="tab" defaultActiveKey="gifs" id="uncontrolled-tab-example">
+                <Tab eventKey="memes" title="Memes">
+                    <div>{this.state.memeCards}</div>
                 </Tab>
-                <Tab eventKey="gifs" title="GifHub">
+                <Tab onClick={this.props.entTabClicked} eventKey="videos" title="Videos">
+                    <h1>Embedded Youtube Videos</h1>
+>>>>>>> fe1ed55dadbd1f74914e4029496417e39b4feea5
+                </Tab>
+                <Tab onClick={this.props.entTabClicked} eventKey="gifs" title="GifHub">
                     <div>{this.state.gifCards}</div>
                 </Tab>
             </Tabs>
