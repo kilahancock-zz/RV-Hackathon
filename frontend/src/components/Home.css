@@ -13,8 +13,8 @@ h1 {
 .welcome {
   margin-top: 50px;
   color: #dd0a35;
-  text-align: center;
-  background-color: #37dfeb;
+  background-color: #5ff0fa;
+  border-radius: 1rem;
 }
 
 .exHead {
