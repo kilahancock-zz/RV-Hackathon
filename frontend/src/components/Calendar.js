@@ -19,12 +19,19 @@ class Calendar extends Component {
            ]
         }
      }
+
+    async getOutlookData() {
+        let endpoint = 'http://localhost:3000/getOutlookData';
+        let returnValue = "";
+        await fetch(endpoint).then(response => {
+            returnValue = response.json();
+        });
+        return returnValue;
+      }
   
      renderTableData() {        
         let lastEnd = 8;
         return this.state.times.map((timeSlot, index) => {
-//            const { Calendar } = timeSlot 
-//            let startTime = calendarData.value[0].start.dateTime.substring(11,16);
             let startTime = timeSlot.start;
             let startHour = parseInt(startTime.substring(0,2));
             let startMinute = parseInt(startTime.substring(3));
@@ -38,7 +45,6 @@ class Calendar extends Component {
             }
             spannerSizeTop = 5*counter;
 
-//            let endTime = calendarData.value[0].end.dateTime.substring(11,16);
             let endTime = timeSlot.end;
             let endHour = parseInt(endTime.substring(0,2));
             let endMinute = parseInt(endTime.substring(3));
@@ -65,17 +71,43 @@ class Calendar extends Component {
             )
         })
    }
+
+    componentDidMount() {
+        this.getOutlookData().then(calendarData => {
+            console.log(calendarData.value);
+            let meetings = calendarData.value;
+            let times = [];
+            for (let i = 0; i < meetings.length; i++) {
+                let startTime = meetings[i].start.dateTime.substring(11,16);
+                let startHour = parseInt(startTime.substring(0,2)) - 4;
+                if (startHour.length < 1) {
+                    startHour = "0" + startHour;
+                }
+                startTime = startHour + startTime.substring(2);
+
+                let endTime = meetings[i].end.dateTime.substring(11,16);
+                let endHour = parseInt(endTime.substring(0,2)) - 4;
+                if (endHour.length < 1) {
+                    endHour = "0" + endHour;
+                }
+                endTime = endHour + endTime.substring(2);
+
+                times.push({start: startTime, end: endTime});
+            }
+            this.setState({times});
+        });
+    }
   
-   render() {
-      return (
-         <div id="calendar">
-             <div class="calendarTitle">Calendar</div>
-             <div class="calendarBody">
-                {this.renderTableData()}
+   render() {        
+        return (
+            <div id="calendar">
+                <div class="calendarTitle">Calendar</div>
+                <div class="calendarBody">
+                    {this.renderTableData()}
+                </div>
             </div>
-         </div>
-      )
-   }
+        )
+    }
 }
 
 

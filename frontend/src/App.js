@@ -102,16 +102,6 @@ async function updateUserStats(userId, section, additional) {
         .then(data => {});
 }
 
-
-//Call this function to get data from outlook calendar
-function getOutlookData() {
-  let endpoint = 'http://localhost:3000/getOutlookData';
-  fetch(endpoint).then(response => {
-    let returnValue = response.json();
-    console.log(returnValue);
-  });
-}
-
 function App() {
 
   /*
@@ -140,7 +130,6 @@ function App() {
     });
     //-------------------------------------------------------------------------
 */
-    getOutlookData();
 
   return (
     <Router>
