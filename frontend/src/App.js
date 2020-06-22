@@ -29,7 +29,7 @@ class App extends Component {
         ent_data: 0,
         snack_data: 0,
         workout_data: 0,
-        creative_data: 0
+        create_data: 0
       },
 
       user_logged_in: false,
@@ -158,11 +158,10 @@ class App extends Component {
       updatedState.email = _email;
       updatedState.password = _password;
 
-      console.log(updatedState);
-      // this.setState ({
-      //   userInfo: updatedState,
-      //   user_logged_in: true
-      // }, () => console.log(this.state));
+      this.setState ({
+        userInfo: updatedState,
+        user_logged_in: true
+      }, () => this.nextStepsLogin(this.state.userInfo));
     };
 
     entClicked = () => {
@@ -177,15 +176,62 @@ class App extends Component {
       });
     };
 
+    foodClicked = () => {
+      let updatedState = {
+        ...this.state.userData
+      }
+      let currTally = updatedState.ent_data;
+      updatedState.snack_data += currTally;
+
+      this.setState ({
+        userData: updatedState
+      });
+    };
+
+    workClicked = () => {
+      let updatedState = {
+        ...this.state.userData
+      }
+      let currTally = updatedState.ent_data;
+      updatedState.workout_data += currTally;
+
+      this.setState ({
+        userData: updatedState
+      });
+    };
+
+    createClicked = () => {
+      let updatedState = {
+        ...this.state.userData
+      }
+      let currTally = updatedState.ent_data;
+      updatedState.create_data += currTally;
+
+      this.setState ({
+        userData: updatedState
+      });
+    };
+
     nextStepsSignup(state) {
       console.log(state);
       if (!this.alreadyExistUser(state.email)) {
         this.createNewUser(state.first, state.last, state.email, state.password);
-        return <Redirect to={this.state.redirect} />
+        this.loginUser(state.email, state.password);
+        return <Redirect to="/" />
       } else {
         console.log("Email already exists");
       }
 
+    }
+
+    nextStepsLogin(state) {
+      console.log(state);
+      if (this.alreadyExistUser(state.email)) {
+        this.loginUser(state.email, state.password);
+        return <Redirect to="/" />
+      } else {
+        console.log("Email already exists");
+      }
 
     }
 
@@ -196,31 +242,29 @@ render () {
     <Router>
     <div className="App">
       <Navigation  />
-      <div className="sideBySide">
-        <Calendar />
-        <Switch>
-          <Route exact path="/">
-            <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.ent_data}
-            snack_data= {this.state.snack_data}/>
-          </Route>
-          <Route path="/signup">
-            <Signup update={this.updateUserState}/>
-          </Route>
-          <Route path="/login">
-            <Login updateLogin= {this.updateLoginState}/>
-          </Route>
-          <Route path="/Laugh">
-            <Entertainment entClicked= {this.entClicked}/>
-          </Route>
-          <Route path="/Eat">
-            <Food />
-          </Route>
-          <Route path="/Stretch">
-            <Workouts />
-          </Route>
-          <Route path="/Create">
-            <Create />
-          </Route>
+      <Switch>
+        <Route exact path="/">
+          <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.ent_data}
+          snack_data= {this.state.snack_data}/>
+        </Route>
+        <Route path="/signup">
+          <Signup update={this.updateUserState}/>
+        </Route>
+        <Route path="/login">
+          <Login updateLogin= {this.updateLoginState}/>
+        </Route>
+        <Route path="/Laugh">
+          <Entertainment entClicked= {this.entClicked}/>
+        </Route>
+        <Route path="/Eat">
+          <Food foodClicked= {this.foodClicked}/>
+        </Route>
+        <Route path="/Stretch">
+          <Workouts workClicked= {this.workClicked}/>
+        </Route>
+        <Route path="/Create">
+          <Create createClicked= {this.createClicked}/>
+        </Route>
         </Switch>
       </div>
     </div>
