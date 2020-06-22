@@ -38,10 +38,11 @@ class App extends Component {
         first: "",
         last: "",
         email: "",
-        password: ""
+        password: "",
+        id: 0
       },
 
-      redirect_to_home: "/"
+      redirect_to_home: null
     };
   }
 
@@ -158,8 +159,7 @@ class App extends Component {
       updatedState.password = _password;
 
       this.setState ({
-        userInfo: updatedState,
-        user_logged_in: true
+        userInfo: updatedState
       }, () => this.nextStepsLogin(this.state.userInfo));
     };
 
@@ -211,8 +211,18 @@ class App extends Component {
       });
     };
 
+    setRedirect = () => {
+      let updatedState = {
+        ...this.state.redirect_to_home
+      }
+      updatedState = "/";
+
+      this.setState ({
+        redirect_to_home: updatedState
+      });
+    };
+
     nextStepsSignup(state) {
-      console.log(state);
         this.alreadyExistUser(state.email).then(
           (exists) => {
             if (!exists) {
@@ -221,7 +231,7 @@ class App extends Component {
                   if (success) {
                     this.loginUser(state.email, state.password).then(
                       () => {
-                        return <Redirect to={"/"} />
+                        this.setRedirect();
                       }
                     );
                   } else {
@@ -235,23 +245,48 @@ class App extends Component {
     }
 
     nextStepsLogin(state) {
-      console.log(state);
-      if (this.alreadyExistUser(state.email)) {
-        let human = this.loginUser(state.email, state.password).then(
-          () => {
-            console.log(human);
+      this.alreadyExistUser(state.email).then(
+        (exists) => {
+          if (exists) {
+            this.loginUser(state.email, state.password).then(
+              (human) => {
+                console.log(human);
+              }
+            );
+          } else {
+            console.log("Login failed");
           }
-        );
-        return <Redirect to="/" />
-      } else {
-        console.log("Email doesn't exists");
-      }
-
+        }
+      );
     }
 
+    loginHelper(human) {
+      let updatedState = {
+        ...this.state.userInfo
+      }
+      updatedState.first = human;
+      // updatedState.last = _last;
+      // updatedState.id = _id;
 
+      this.setState ({
+        userInfo: updatedState,
+        user_logged_in: true,
+        redirect_to_home: "/"
+      });
+    }
 
 render () {
+  if (this.state.redirect_to_home) {
+    return (
+      <Router>
+        <Redirect to="/" />
+        <Route exact path="/">
+          <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.ent_data}
+          snack_data= {this.state.snack_data}/>
+        </Route>
+      </Router>
+    );
+  }
   return (
     <Router>
     <div className="App">
