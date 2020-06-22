@@ -34,7 +34,7 @@ app.get("/newUser/:message", (req, res) => {
     });
 });
 
-//check to see if a user currently exists in the DB
+//check to see if a user currently exists in the DB.
 app.get("/existUser/:message", (req, res) => {
     let email = req.params.message;
     let queryStr = "SELECT * FROM Test_Table WHERE email='" + email + "';";
@@ -55,6 +55,42 @@ app.get("/loginUser/:message", (req, res) => {
     let email = parameters[0];
     let password = parameters[1];
     let queryStr = "SELECT * FROM Test_Table WHERE email='" + email + "' AND passphrase='" + password + "';";
+    console.log(queryStr);
+    db.query(queryStr, (err, results) => {
+        if(err){
+            console.error(err);
+            res.status(500)
+        }
+        console.log(results);
+        res.send(results);
+    });
+});
+
+//Updates a user's unique category counters.
+app.get("/updateUser/:message", (req, res) => {
+    let parameters = req.params.message.split("+");
+    let personId = parameters[0];
+    let section = parseInt(parameters[1]);
+    let additional = parameters[2];
+    let sectionName = "";
+    switch (section) {
+        case 0:
+            sectionName = "creative";
+            break;
+        case 1:
+            sectionName = "food";
+            break;
+        case 2:
+            sectionName = "entertainment";
+            break;
+        case 3:
+            sectionName = "workout";
+            break;
+        default:
+            sectionName = "oh no things have gone bad.";
+            break;
+    }
+    let queryStr = "UPDATE Test_Table SET " + sectionName + " = " + sectionName + " + " + additional + " WHERE " + "id = " + personId + ";";
     console.log(queryStr);
     db.query(queryStr, (err, results) => {
         if(err){
