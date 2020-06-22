@@ -8,14 +8,14 @@ class Calendar extends Component {
         super(props)
         this.state = { 
             meetingArray: [
-              { start: "08:00", end: "08:45", title: "Morning meeting"},
-              { start: "09:15", end: "09:30", title: "Daily Check-in"},
-              { start: "10:30", end: "11:00", title: "Engineer Shadowing"},
-              { start: "11:00", end: "11:45", title: "Intense Programming Session"},
-              { start: "12:00", end: "12:30", title: "Lunch one-on-one"},
-              { start: "13:00", end: "15:00", title: "Peer Programming Meeting"},
-              { start: "15:00", end: "15:30", title: "WFH - Body Weight Workout"},
-              { start: "17:00", end: "18:00", title: "After-work Hangout"},
+              { key: 1, start: "08:00", end: "08:45", title: "Morning meeting"},
+              { key: 2, start: "09:15", end: "09:30", title: "Daily Check-in"},
+              { key: 3, start: "10:30", end: "11:00", title: "Engineer Shadowing"},
+              { key: 4, start: "11:00", end: "11:45", title: "Intense Programming Session"},
+              { key: 5, start: "12:00", end: "12:30", title: "Lunch one-on-one"},
+              { key: 6, start: "13:00", end: "15:00", title: "Peer Programming Meeting"},
+              { key: 7, start: "15:00", end: "15:30", title: "WFH - Body Weight Workout"},
+              { key: 8, start: "17:00", end: "18:00", title: "After-work Hangout"},
            ]
         }
      }
@@ -102,7 +102,7 @@ class Calendar extends Component {
                     endTime = endHour + endTime.substring(2);
     
                     //Push the necessary data into the calendar array
-                    meetingArray.push({start: startTime, end: endTime, title:meetings[i].subject});
+                    meetingArray.push({key: i, start: startTime, end: endTime, title:meetings[i].subject});
                 }
 
                 //Set the state to the array of meetings
