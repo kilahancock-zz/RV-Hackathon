@@ -131,7 +131,7 @@ class Food extends Component {
     render() {
         return(
             <Container>
-            <Tabs onClick={this.props.foodClicked} className="eat" defaultActiveKey="recipes" id="uncontrolled-tab-example">
+            <Tabs onClick={this.props.workClicked} className="eat" defaultActiveKey="recipes" id="uncontrolled-tab-example">
                 <Tab eventKey="recipes" title="Recipes">
                     <div>{this.state.recipeCards}</div>
                 </Tab>
