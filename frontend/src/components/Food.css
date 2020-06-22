@@ -17,8 +17,7 @@
 }
 
 .eat a {
-    color:
-    #fff;
+    color: #fff;
 }
 
 .eat {
@@ -27,4 +26,18 @@
 
 a:hover {
     color: #000;
+}
+
+.summary {
+    width: 90%;
+    margin-left: 20px;
+}
+
+.summary a {
+    color: #000;
+    text-decoration: underline;
+}
+
+.recipeTitle {
+    margin-top: 40px;
 }
