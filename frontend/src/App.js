@@ -26,13 +26,13 @@ class App extends Component {
     this.state = {
 
       userData : {
-        ent_data: 0,
-        snack_data: 0,
-        workout_data: 0,
-        create_data: 0
+        ent_data: 10,
+        snack_data: 5,
+        workout_data: 3,
+        create_data: 1
       },
 
-      user_logged_in: false,
+      user_logged_in: true,
 
       userInfo : {
         first: "",
@@ -143,7 +143,6 @@ class App extends Component {
       updatedState.email = _email;
       updatedState.password = _password;
 
-      console.log(updatedState);
       this.setState ({
         userInfo: updatedState,
         user_logged_in: true
@@ -190,23 +189,38 @@ class App extends Component {
 
     nextStepsSignup(state) {
       console.log(state);
-      if (!this.alreadyExistUser(state.email)) {
-        this.createNewUser(state.first, state.last, state.email, state.password);
-        this.loginUser(state.email, state.password);
-        return <Redirect to="/" />
-      } else {
-        console.log("Email already exists");
-      }
-
+        this.alreadyExistUser(state.email).then(
+          (exists) => {
+            if (!exists) {
+              this.createNewUser(state.first, state.last, state.email, state.password).then(
+                (success) => {
+                  if (success) {
+                    this.loginUser(state.email, state.password).then(
+                      () => {
+                        return <Redirect to={"/"} />
+                      }
+                    );
+                  } else {
+                    console.log("Signup failed");
+                  }
+                }
+              );
+            }
+          }
+        );
     }
 
     nextStepsLogin(state) {
       console.log(state);
       if (this.alreadyExistUser(state.email)) {
-        this.loginUser(state.email, state.password);
+        let human = this.loginUser(state.email, state.password).then(
+          () => {
+            console.log(human);
+          }
+        );
         return <Redirect to="/" />
       } else {
-        console.log("Email already exists");
+        console.log("Email doesn't exists");
       }
 
     }
@@ -222,8 +236,9 @@ render () {
       <Calendar />
       <Switch>
         <Route exact path="/">
-          <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.ent_data}
-          snack_data= {this.state.snack_data}/>
+          <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.userData.ent_data}
+          snack_data={this.state.userData.snack_data} workout_data={this.state.userData.workout_data}
+          create_data={this.state.userData.create_data}/>
         </Route>
         <Route path="/signup">
           <Signup update={this.updateUserState}/>
