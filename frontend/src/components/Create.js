@@ -24,7 +24,7 @@ class Create extends Component {
               <h1 className="drawHead">
                 Draw Something!
               </h1>
-              <CanvasDraw className="draw" brushColor={this.state.color}/>
+              <CanvasDraw onClick={this.props.workClicked} className="draw" brushColor={this.state.color}/>
               <div className="red" onClick={() => this.handleClick("#ff0000")}>RED</div>
               <div className="blue" onClick={() => this.handleClick("#0000ff")}>BLUE</div>
               <div className="green" onClick={() => this.handleClick("#008000")}>GREEN</div>
