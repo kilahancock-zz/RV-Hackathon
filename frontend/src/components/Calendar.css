@@ -19,6 +19,28 @@
     background-color: #242424;
 }
 
+.potentialOverlap {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.potentialOverlap.isOverlapping {
+    flex: 0 0 15%;
+}
+
+.potentialOverlap.normal {
+    flex: 1;
+}
+
+.calendarWorkBubble:hover {
+    background-color: green;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: string;
+    min-height: 5.5vh;
+}
+
 .calendarWorkBubble {
     border: 1px solid #575757;
     border-radius: 0.5rem;
@@ -26,6 +48,9 @@
     color: white;
     text-align: left;
     font-size: smaller;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .halfHeight-5 {
