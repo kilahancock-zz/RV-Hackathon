@@ -231,7 +231,7 @@ render () {
   return (
     <Router>
     <div className="App">
-      <Navigation />
+      <Navigation name={this.state.userInfo.first}/>
       <div className="sideBySide">
       <Calendar userEmail={this.state.userInfo.email}/>
       <Switch>

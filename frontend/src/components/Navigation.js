@@ -23,6 +23,10 @@ class Navigation extends Component {
   }
 
   render() {
+      let str = ""
+      if (this.props.name !== "") {
+        str = "Hi, " + this.props.name + "!"
+      }
       return(
           <Container className= "nav">
               <Navbar className = "nav" sticky="top" bg="light" expand="lg">
@@ -43,8 +47,8 @@ class Navigation extends Component {
                             <Link to="/Create">Create</Link>
                           </Nav.Link>
                       </Nav>
-
                       <Nav className="login">
+                      <h6 id="hi">{str}</h6>
                       <Nav.Link>
                         <Link to="/login">Login</Link>
                       </Nav.Link>
