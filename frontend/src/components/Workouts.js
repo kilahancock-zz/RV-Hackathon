@@ -51,27 +51,13 @@ class Workouts extends Component {
                     <h3 className="exHead">Videos from RV's Very Own: Nick Trull</h3>
                     <Row>
                       <Col>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/TVFW0hIqDOY" 
+                        <iframe onClick={this.props.workClicked} width="560" height="315" src="https://www.youtube.com/embed/TVFW0hIqDOY" 
                           frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                           allowfullscreen>
                         </iframe>
                       </Col>
                       <Col>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/n74UV0QNXH0" 
-                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                          allowfullscreen>
-                        </iframe>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/bZZDReTfBFY" 
-                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                          allowfullscreen>
-                        </iframe>
-                      </Col>
-                      <Col>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4ZOgdOEt9hA" 
+                        <iframe onClick={this.props.workClicked} width="560" height="315" src="https://www.youtube.com/embed/n74UV0QNXH0" 
                           frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                           allowfullscreen>
                         </iframe>
@@ -79,27 +65,13 @@ class Workouts extends Component {
                     </Row>
                     <Row>
                       <Col>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/IdnWH3uDbcE" 
+                        <iframe onClick={this.props.workClicked} width="560" height="315" src="https://www.youtube.com/embed/bZZDReTfBFY" 
                           frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                           allowfullscreen>
                         </iframe>
                       </Col>
                       <Col>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Gnrya2Vh4F8" 
-                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                          allowfullscreen>
-                        </iframe>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/skIo_PIzV2E" 
-                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                          allowfullscreen>
-                        </iframe>
-                      </Col>
-                      <Col>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/QM4NZCetNxE" 
+                        <iframe onClick={this.props.workClicked} width="560" height="315" src="https://www.youtube.com/embed/4ZOgdOEt9hA" 
                           frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                           allowfullscreen>
                         </iframe>
@@ -107,13 +79,41 @@ class Workouts extends Component {
                     </Row>
                     <Row>
                       <Col>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/EM6MbIY_6SY" 
+                        <iframe onClick={this.props.workClicked} width="560" height="315" src="https://www.youtube.com/embed/IdnWH3uDbcE" 
                           frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                           allowfullscreen>
                         </iframe>
                       </Col>
                       <Col>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/1aRo0Ryh1Ac" 
+                        <iframe onClick={this.props.workClicked} width="560" height="315" src="https://www.youtube.com/embed/Gnrya2Vh4F8" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <iframe onClick={this.props.workClicked} width="560" height="315" src="https://www.youtube.com/embed/skIo_PIzV2E" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                      <Col>
+                        <iframe onClick={this.props.workClicked} width="560" height="315" src="https://www.youtube.com/embed/QM4NZCetNxE" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <iframe onClick={this.props.workClicked} width="560" height="315" src="https://www.youtube.com/embed/EM6MbIY_6SY" 
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                          allowfullscreen>
+                        </iframe>
+                      </Col>
+                      <Col>
+                        <iframe onClick={this.props.workClicked} width="560" height="315" src="https://www.youtube.com/embed/1aRo0Ryh1Ac" 
                           frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                           allowfullscreen>
                         </iframe>
