@@ -1,30 +1,37 @@
 
 .welcome {
   margin-top: 210px;
-  background-color: #000;
+  background-color: #f5f0e3;
   width: 500px;
 }
 
 h1 {
   margin-top: 50px;
-  color: #fff;
+  color: #f5f0e3;
+}
+
+.exHead {
+  color: #f5f0e3;
 }
 
 .row {
   margin-top: 100px;
-  border-style: groove;
-  border-color: #000;
+  border-style: solid;
+  border-width: medium;
+  background-color: #d3f2fa;
+  border-color: #37dfeb;
   padding: 20px;
 }
 
 .col {
   padding: 20px;
   width: 100px;
+  color: #dd0a35;
 }
 
 .left {
-  border-left: groove;
-  border-color: #000;
+  border-left: solid;
+  border-color: #37dfeb;
   margin-left: 50px;
-  border-left-width: thick;
+  border-left-width: medium;
 }
