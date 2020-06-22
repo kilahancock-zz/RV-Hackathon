@@ -232,7 +232,7 @@ render () {
     <div className="App">
       <Navigation />
       <div className="sideBySide">
-      <Calendar />
+      <Calendar userEmail={this.state.userInfo.email}/>
       <Switch>
         <Route exact path="/">
           <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.userData.ent_data}
