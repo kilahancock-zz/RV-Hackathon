@@ -1,15 +1,13 @@
 #calendar {
     width: 15%;
     height: 92vh;
+    margin-top: 30px;
 }
 
 .calendarTitle {
-    height: 4vh;
     text-align: center;
-    background-color: #bf0b0b;
+    font-size: 200%;
     color: white;
-    border: 1px solid #575757;
-    border-radius: 0.5rem;
 }
 
 .calendarBody {

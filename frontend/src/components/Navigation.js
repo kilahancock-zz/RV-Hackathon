@@ -62,10 +62,6 @@ class Navigation extends Component {
                             <Link to="/Create">Create</Link>
                           </Nav.Link>
                       </Nav>
-                      <Form inline>
-                          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                          <Button className="search">Search</Button>
-                      </Form>
 
                       <Nav className="login">
                       <Nav.Link>

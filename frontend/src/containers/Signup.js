@@ -4,7 +4,8 @@ import {
   FormGroup,
   FormControl,
   FormLabel,
-  Button
+  Button,
+  Container
 } from "react-bootstrap";
 import "./Signup.css";
 
@@ -53,6 +54,7 @@ class Signup extends Component {
 
   render() {
     return (
+      <Container>
       <div className="Signup">
       <form onSubmit={this.handleSubmit}>
         <FormGroup controlId="first_name" bsSize="large">
@@ -89,11 +91,12 @@ class Signup extends Component {
           </FormGroup>
           <Button
           block
-          type="submit"
+          variant="flat"
           bsSize="large">Submit
         </Button>
       </form>
       </div>
+      </Container>
     );
   }
 }
