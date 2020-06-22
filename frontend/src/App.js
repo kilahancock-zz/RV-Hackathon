@@ -8,6 +8,7 @@ import Food from './components/Food.js'
 import Workouts from './components/Workouts.js';
 import Create from './components/Create.js';
 import Signup from './containers/Signup.js';
+import Calendar from './components/Calendar.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -265,7 +266,7 @@ render () {
           <Create createClicked= {this.createClicked}/>
         </Route>
         </Switch>
-
+      </div>
     </div>
     </Router>
   );

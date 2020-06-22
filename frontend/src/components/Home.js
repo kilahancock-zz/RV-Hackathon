@@ -8,25 +8,24 @@ class Home extends Component {
   }
 
     render() {
-      console.log(this.props.ent_data);
           if (this.props.user_logged_in) {
             return(
             <Container>
-              <h1>Your Break Stats! </h1>
+              <h1 class="welcome">Your Break Stats! </h1>
               <Row>
-                <Col>Memes viewed: {this.props.ent_data}</Col>
-                <Col className="left">Snacks made: {this.props.snack_data}</Col>
+                <Col>Memes viewed: {this.props.userData.ent_data}</Col>
+                <Col className="left">Snacks made: {this.props.userData.snack_data}</Col>
               </Row>
               <Row>
-                <Col>Workouts completed: </Col>
-                <Col className="left">Creative moments: </Col>
+                <Col>Workouts completed: {this.props.userData.snack_data}</Col>
+                <Col className="left">Creative moments: {this.props.userData.snack_data}</Col>
               </Row>
             </Container>
             );
           } else {
             return(
               <Container className="welcome">
-              <h1>Welcome to RedRelax.</h1>
+              <h1 class="welcome">Welcome to RedRelax.</h1>
               </Container>
               );
           }
