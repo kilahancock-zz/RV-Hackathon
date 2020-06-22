@@ -26,13 +26,13 @@ class App extends Component {
     this.state = {
 
       userData : {
-        ent_data: 0,
-        snack_data: 0,
-        workout_data: 0,
-        create_data: 0
+        ent_data: 10,
+        snack_data: 5,
+        workout_data: 3,
+        create_data: 1
       },
 
-      user_logged_in: false,
+      user_logged_in: true,
 
       userInfo : {
         first: "",
@@ -163,52 +163,28 @@ class App extends Component {
       }, () => this.nextStepsLogin(this.state.userInfo));
     };
 
+    //handler for when some entertainment content is clicked on.
     entClicked = () => {
-      let updatedState = {
-        ...this.state.userData
-      }
-      let currTally = updatedState.ent_data;
-      updatedState.ent_data += currTally;
-
-      this.setState ({
-        userData: updatedState
-      });
+        this.userData.setState({ent_data: this.state.userData.ent_data + 1});
+        this.updateUserStats(this.state.userInfo.id, 2, 1).then(() => console.log("updated creative counter by 1!"));
     };
 
+    //handler for when some food content is clicked on.
     foodClicked = () => {
-      let updatedState = {
-        ...this.state.userData
-      }
-      let currTally = updatedState.ent_data;
-      updatedState.snack_data += currTally;
-
-      this.setState ({
-        userData: updatedState
-      });
+        this.userData.setState({snack_data: this.state.userData.snack_data + 1});
+        this.updateUserStats(this.state.userInfo.id, 1, 1).then(() => console.log("updated food counter by 1!"));
     };
 
+    //handler for when some workout content is clicked on.
     workClicked = () => {
-      let updatedState = {
-        ...this.state.userData
-      }
-      let currTally = updatedState.ent_data;
-      updatedState.workout_data += currTally;
-
-      this.setState ({
-        userData: updatedState
-      });
+        this.userData.setState({work_data: this.state.userData.work_data + 1});
+        this.updateUserStats(this.state.userInfo.id, 3, 1).then(() => console.log("updated workout counter by 1!"));
     };
 
+    //handler for when some creative content is clicked on.
     createClicked = () => {
-      let updatedState = {
-        ...this.state.userData
-      }
-      let currTally = updatedState.ent_data;
-      updatedState.create_data += currTally;
-
-      this.setState ({
-        userData: updatedState
-      });
+        this.userData.setState({create_data: this.state.userData.create_data + 1});
+        this.updateUserStats(this.state.userInfo.id, 0, 1).then(() => console.log("updated creative counter by 1!"));
     };
 
     setRedirect = () => {
@@ -292,11 +268,12 @@ render () {
     <div className="App">
       <Navigation />
       <div className="sideBySide">
-      <Calendar />
+      <Calendar userEmail={this.state.userInfo.email}/>
       <Switch>
         <Route exact path="/">
-          <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.ent_data}
-          snack_data= {this.state.snack_data}/>
+          <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.userData.ent_data}
+          snack_data={this.state.userData.snack_data} workout_data={this.state.userData.workout_data}
+          create_data={this.state.userData.create_data}/>
         </Route>
         <Route path="/signup">
           <Signup update={this.updateUserState}/>

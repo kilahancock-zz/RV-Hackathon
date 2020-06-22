@@ -12,7 +12,7 @@
 }
 
 .memeCard {
-    background-color: #f5f0e3;
+    background-color: #fa8072;
     border-radius: 10px;
     margin: 20px;
     padding: 20px;
@@ -34,6 +34,5 @@
 }
 
 a:hover {
-    color: #f5f0e3;
-    background-color: #d3f2fa;
+    background-color: #fa8072;
 }

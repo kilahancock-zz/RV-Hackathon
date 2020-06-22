@@ -13,12 +13,12 @@ class Home extends Component {
             <Container>
               <h1 className="welcome">Your Break Stats! </h1>
               <Row>
-                <Col>Memes viewed: {this.props.userData.ent_data}</Col>
-                <Col className="left">Snacks made: {this.props.userData.snack_data}</Col>
+                <Col>Memes viewed: {this.props.ent_data}</Col>
+                <Col className="left">Snacks made: {this.props.snack_data}</Col>
               </Row>
               <Row>
-                <Col>Workouts completed: {this.props.userData.snack_data}</Col>
-                <Col className="left">Creative moments: {this.props.userData.snack_data}</Col>
+                <Col>Workouts completed: {this.props.workout_data}</Col>
+                <Col className="left">Creative moments: {this.props.create_data}</Col>
               </Row>
             </Container>
             );
