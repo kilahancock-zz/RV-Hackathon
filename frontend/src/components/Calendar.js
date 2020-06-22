@@ -63,12 +63,10 @@ class Calendar extends Component {
             }
             bubbleHeight = 5*counter;
 
-            let overlap = "isOverlapping";
-
             return (
-                <div >
-                    <div class={"spacer halfHeight-" + spannerSizeTop + " " + overlap}></div>
-                    <div class={"calendarWorkBubble halfHeight-" + bubbleHeight + " " + overlap}>{startTime + "-" + endTime + " " + meetingInfo.title}</div>
+                <div>
+                    <div class={"spacer halfHeight-" + spannerSizeTop}></div>
+                    <div class={"calendarWorkBubble halfHeight-" + bubbleHeight}>{startTime + "-" + endTime + " " + meetingInfo.title}</div>
                 </div>
             )
         })
