@@ -241,7 +241,9 @@ render () {
   return (
     <Router>
     <div className="App">
-      <Navigation  />
+      <Navigation />
+      <div className="sideBySide">
+      <Calendar />
       <Switch>
         <Route exact path="/">
           <Home user_logged_in={this.state.user_logged_in} ent_data= {this.state.ent_data}
@@ -266,7 +268,7 @@ render () {
           <Create createClicked= {this.createClicked}/>
         </Route>
         </Switch>
-      </div>
+    </div>
     </div>
     </Router>
   );
