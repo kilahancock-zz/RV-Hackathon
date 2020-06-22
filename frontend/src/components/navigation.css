@@ -4,7 +4,7 @@
 }
 
 .navbar {
-  background-color: #d3f2fa!important;
+  background-color: #fa8072!important;
   border-radius: 0.5rem;
 }
 
@@ -22,11 +22,6 @@
 }
 
 .navbar-collapse {
-  background-color: #4eeefa;
+  background-color: #efb3ab;
   border-radius: 0.5rem;
-}
-
-.search {
-  background-color: #000;
-  border-color: #ffd0bc;
 }

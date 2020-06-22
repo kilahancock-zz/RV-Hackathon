@@ -1,7 +1,7 @@
 
 .welcome {
   margin-top: 210px;
-  background-color: #f5f0e3;
+  background-color: #efb3ab;
   width: 500px;
 }
 
@@ -14,7 +14,7 @@ h1 {
   margin-top: 50px;
   color: #dd0a35;
   text-align: center;
-  background-color: #37dfeb;
+  background-color: #fa8072;
 }
 
 .exHead {
@@ -25,8 +25,8 @@ h1 {
   margin-top: 100px;
   border-style: solid;
   border-width: medium;
-  background-color: #d3f2fa;
-  border-color: #37dfeb;
+  background-color: #efb3ab;
+  border-color: #fa8072;
   padding: 20px;
 }
 
@@ -38,7 +38,7 @@ h1 {
 
 .left {
   border-left: solid;
-  border-color: #37dfeb;
+  border-color: #fa8072;
   margin-left: 50px;
   border-left-width: medium;
 }
