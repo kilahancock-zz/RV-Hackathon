@@ -52,7 +52,7 @@ class Entertainment extends Component {
 
     render() {
         return(
-            <div>
+            <div class="container">
             <h1>Entertainment</h1>
             <Container>
             <Tabs defaultActiveKey="gifs" id="uncontrolled-tab-example">

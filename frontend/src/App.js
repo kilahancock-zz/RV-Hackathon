@@ -114,6 +114,7 @@ function getOutlookData() {
 
 function App() {
 
+  /*
     //EXAMPLE OF USER-RELATED BACKEND CALLS----------------------------------
     alreadyExistUser("Billy@gmail.com").then(exists => {
         //if Billy doesn't already exist, create an account for him.
@@ -138,38 +139,39 @@ function App() {
        }
     });
     //-------------------------------------------------------------------------
-
+*/
     getOutlookData();
 
   return (
     <Router>
     <div className="App">
       <Navigation />
-      <Calendar />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/signup">
-          <Signup />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/Laugh">
-          <Entertainment />
-        </Route>
-        <Route path="/Eat">
-          <Food />
-        </Route>
-        <Route path="/Stretch">
-          <Workouts />
-        </Route>
-        <Route path="/Create">
-          <Create />
-        </Route>
+      <div className="sideBySide">
+        <Calendar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/Laugh">
+            <Entertainment />
+          </Route>
+          <Route path="/Eat">
+            <Food />
+          </Route>
+          <Route path="/Stretch">
+            <Workouts />
+          </Route>
+          <Route path="/Create">
+            <Create />
+          </Route>
         </Switch>
-
+      </div>
     </div>
     </Router>
   );
