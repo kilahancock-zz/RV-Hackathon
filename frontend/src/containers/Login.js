@@ -12,10 +12,6 @@ class Login extends Component {
     }
   }
 
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
-  }
-
   setEmail = (event) => {
     this.setState ({
       email: event.target.value
@@ -24,7 +20,7 @@ class Login extends Component {
 
   setEmail = (event) => {
     this.setState ({
-      email: event.target.value
+      password: event.target.value
     });
   }
 
@@ -48,7 +44,7 @@ render() {
             onChange={this.setPassword}
           />
         </FormGroup>
-        <Button onClick={this.props.updateLogin(this.state.email, this.state.password)} variant="flat" block bsSize="large" disabled={!this.validateForm}>
+        <Button onClick={() => this.props.updateLogin(this.state.email, this.state.password)} variant="flat" block bsSize="large">
           Login
         </Button>
       </form>

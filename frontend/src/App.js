@@ -143,7 +143,6 @@ class App extends Component {
       updatedState.email = _email;
       updatedState.password = _password;
 
-      console.log(updatedState);
       this.setState ({
         userInfo: updatedState,
         user_logged_in: true
@@ -214,23 +213,38 @@ class App extends Component {
 
     nextStepsSignup(state) {
       console.log(state);
-      if (!this.alreadyExistUser(state.email)) {
-        this.createNewUser(state.first, state.last, state.email, state.password);
-        this.loginUser(state.email, state.password);
-        return <Redirect to="/" />
-      } else {
-        console.log("Email already exists");
-      }
-
+        this.alreadyExistUser(state.email).then(
+          (exists) => {
+            if (!exists) {
+              this.createNewUser(state.first, state.last, state.email, state.password).then(
+                (success) => {
+                  if (success) {
+                    this.loginUser(state.email, state.password).then(
+                      () => {
+                        return <Redirect to={"/"} />
+                      }
+                    );
+                  } else {
+                    console.log("Signup failed");
+                  }
+                }
+              );
+            }
+          }
+        );
     }
 
     nextStepsLogin(state) {
       console.log(state);
       if (this.alreadyExistUser(state.email)) {
-        this.loginUser(state.email, state.password);
+        let human = this.loginUser(state.email, state.password).then(
+          () => {
+            console.log(human);
+          }
+        );
         return <Redirect to="/" />
       } else {
-        console.log("Email already exists");
+        console.log("Email doesn't exists");
       }
 
     }
