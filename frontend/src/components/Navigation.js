@@ -7,9 +7,9 @@ import Food from './Food.js'
 import Workouts from './Workouts.js';
 import Create from './Create.js';
 import App from '../App.js';
-import Main from '../containers/Main.js';
 import Login from '../containers/Login.js';
 import Signup from '../containers/Signup.js';
+import Home from './Home.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -43,7 +43,6 @@ class Navigation extends Component {
 
   render() {
       return(
-          <Router>
           <Container className= "nav">
               <Navbar className = "nav" sticky="top" bg="light" expand="lg">
                   <Navbar.Brand className = "title"><Link to="/">RedRelax</Link></Navbar.Brand>
@@ -80,27 +79,6 @@ class Navigation extends Component {
                   </Navbar.Collapse>
               </Navbar>
           </Container>
-          <Switch>
-            <Route path="/signup">
-              <Signup />
-              </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/Laugh">
-              <Entertainment />
-            </Route>
-            <Route path="/Eat">
-              <Food />
-            </Route>
-            <Route path="/Stretch">
-              <Workouts />
-            </Route>
-            <Route path="/Create">
-              <Create />
-            </Route>
-            </Switch>
-          </Router>
       );
   }
 }
