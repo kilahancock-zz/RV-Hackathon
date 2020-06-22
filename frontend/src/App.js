@@ -4,7 +4,12 @@ import Navigation from './components/Navigation.js';
 import Main from './containers/Main.js';
 import Login from './containers/Login.js';
 
-//creates a new user in the system.
+//@description: Creates a new user in the system.
+//@param String firstName: first name of the new user.
+//@param String lastName: last name of the new user.
+//@param String emailAddress: the chosen email for the new user.
+//@param String password: the chosen password for the new user.
+//@returns boolean success: whether or not user-creation was successful.
 async function createNewUser(firstName, lastName, emailAddress, password) {
     let success = false;
     if (firstName.includes("+")) {
@@ -27,7 +32,9 @@ async function createNewUser(firstName, lastName, emailAddress, password) {
     return success;
 }
 
-//checks to see if a user is already in the system / exists.
+//@description: Checks to see if a user already exists. Call this function before deciding an attempt at login.
+//@param String emailAddress: self-explanatory.
+//@returns boolean exists: whether or not the email address was found in the database.
 async function alreadyExistUser(emailAddress) {
     let exists = false;
     if (emailAddress.includes("+")) {
@@ -49,7 +56,10 @@ async function alreadyExistUser(emailAddress) {
     return exists;
 }
 
-//Attempts a user login. Do this only after knowing a User already exists.
+//@description: Attempts a user login. Only call after knowing a user already exists.
+//@param String emailAddress: self-explanatory.
+//@param String password: self-explanatory.
+//@returns JSON: person object if login successful.
 async function loginUser(emailAddress, password) {
     let human = null;
     if (emailAddress.includes("+")) {
@@ -69,6 +79,18 @@ async function loginUser(emailAddress, password) {
     return human;
 }
 
+//@description: call this function as you load in "content" so we can keep track of content loaded per-user.
+//@param int userId: unique per user (returned in JSON when logged user in).
+//@param int section: 0=creative, 1=food, 2=entertainment, 3=workout.
+//@param int additional: by how much do you wish to increase the chosen counter in the DB.
+//@returns null
+async function updateUserStats(userId, section, additional) {
+    let queryStr = 'http://localhost:3000/updateUser/' + userId + "+" + section + "+" + additional;
+    await fetch(queryStr)
+        .then(data => {});
+}
+
+
 //Call this function to get data from outlook calendar
 function getOutlookData() {
   let endpoint = 'http://localhost:3000/getOutlookData';
@@ -77,28 +99,30 @@ function getOutlookData() {
 
 function App() {
 
-    //test to see if Billy already exists as a user.
+    //EXAMPLE OF USER-RELATED BACKEND CALLS----------------------------------
     alreadyExistUser("Billy@gmail.com").then(exists => {
-        //if not, create an account for him.
+        //if Billy doesn't already exist, create an account for him.
        if (!exists) {
            createNewUser("Billy", "Bob", "Billy@gmail.com", "12345").then((success) => {
                //if account creation successful, go ahead and log him in.
                if (success) {
                    loginUser("Billy@gmail.com", "12345").then(results => {
+                       //print his returned JSON data.
                        console.log(results);
                    });
                }
            });
-       //if so, log him in and print his info.
+       //if Billy does exist, go ahead and log him in.
        } else {
            loginUser("Billy@gmail.com", "12345").then(results => {
+               //print his returned JSON data.
                console.log(results);
+               //also update his food counter by 15.
+               updateUserStats(1, 1, 15).then(() => console.log("food increased by 15"));
            });
        }
     });
-
-
-
+    //-------------------------------------------------------------------------
 
     getOutlookData();
 
